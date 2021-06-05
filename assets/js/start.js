@@ -1,5 +1,3 @@
-
-
 var listOfCoins = function() {
     // List of all coins
     var apiUrl = "https://api.coingecko.com/api/v3/coins/list?include_platform=true";
@@ -90,7 +88,6 @@ var displayData = function(name, price = 0, marketCap = 0, volume = 0, logo = 0,
 
 
 
-var nytApiKey = "LCyA6VYEUWEMBexw7HmmAlPdPJopvG9G";
 var keyWord = "";
 
 
@@ -130,38 +127,55 @@ var renderNews = function() {
 };
 
 
+var displayArticles = function(article) {
+    var articles = document.querySelector("#article-row");
+    articles.className = "col-6 bg-ligh text-dark align-right";
+    for (var i = 0; i < 5; i++) {
+        var articleLink = document.createElement("h6");
+        var articleHeadline = document.createElement("a");
+        if (article.response.docs[i].headline.print_headline) {
+            articleHeadline.setAttribute("href", article.response.docs[i].web_url);
+            articleHeadline.textContent = article.response.docs[i].headline.print_headline;
+        } else if (article.response.docs[i].snippet) {
+            articleHeadline.setAttribute("href", article.response.docs[i].web_url);
+            articleHeadline.textContent = article.response.docs[i].snippet;
+        } else {
+            return;
+        }
+
+        articleLink.append(articleHeadline);
+        articles.append(articleLink);
+    }
+};
+
 var fetchNYT = function() {
 
     var nytApiKey = "LCyA6VYEUWEMBexw7HmmAlPdPJopvG9G";
     var apiUrl = "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=" + keyWord + "&api-key=" + nytApiKey;
 
-    console.log("keyword in fetchNYT function: ", keyWord);
-    console.log("apiUrl search value: ", apiUrl);
     fetch(apiUrl).then(function(response) {
-        console.log(response);
-
-        return response.json();
-    }).then(function(article) {
-        console.log(article);
-        var articles = document.querySelector("#article-row");
-        articles.className = "col-6 bg-ligh text-dark align-right";
-        for (var i = 0; i < 5; i++) {
-            var articleLink = document.createElement("h6");
-            var articleHeadline = document.createElement("a");
-            if (article.response.docs[i].headline.print_headline) {
-                articleHeadline.setAttribute("href", article.response.docs[i].web_url);
-                articleHeadline.textContent = article.response.docs[i].headline.print_headline;
-            } else if (article.response.docs[i].snippet) {
-                articleHeadline.setAttribute("href", article.response.docs[i].web_url);
-                articleHeadline.textContent = article.response.docs[i].snippet;
-            } else {
-                return;
-            }
-
-            articleLink.append(articleHeadline);
-            articles.append(articleLink);
+        console.log("First .then()")
+        if (response.ok) {
+            response.json().then(function(article) {
+                displayArticles(article);
+            })
+        } else {
+            console.log("Error retrieving data", response);
         }
     })
 };
+
+var fetchAp = function() {
+    var apiUrl = "https://content.guardianapis.com/search?page=5&q=" + keyWord + "&api-key=" + guardianApiKey;
+    var guardianApiKey = "LCyA6VYEUWEMBexw7HmmAlPdPJopvG9G";
+
+    fetch(apiUrl).then(function(response) {
+        return response.json();
+    }).then(function(data) {
+        console.log(data);
+    })
+};
+
+
 
 renderNews();
