@@ -1,4 +1,4 @@
-# Group-Project-1
+# Group-Project-1 - JoinCoin
 
 ## Ideas
 Cryptocurrency app - api for prices, API for twitter chat
