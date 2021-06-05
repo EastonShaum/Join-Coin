@@ -197,3 +197,5 @@ var fetchNYT = function() {
         }
     })
 };
+
+renderNews();
