@@ -104,7 +104,7 @@ var coinInfo = function(coinName, date = moment().format('DD-MM-YYYY') ) {
       });
 };
 
-var displayData = function(name, price = 0, marketCap, volume, logo = 0, date = moment().format('MMMM Do YYYY, h:mm:ss a')) {
+var displayData = function(name, price = 0, marketCap = 0, volume = 0, logo = 0, date = moment().format('MMMM Do YYYY, h:mm:ss a')) {
 
     if (price != 0) {
 
