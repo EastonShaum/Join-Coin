@@ -1,4 +1,4 @@
-
+var trendingEl = document.getElementById("");
 
 var listOfCoins = function() {
     // List of all coins
@@ -37,7 +37,7 @@ var trendingCoins = function() {
                     var coinPrice = data.coins[i].price_btc
                     var largePng = data.coins[i].large
 
-                    displayData(coinName, coinPrice, largePng);
+                    displayTrendingData(coinName, coinPrice, largePng);
 
                 };
             });
@@ -62,7 +62,7 @@ var coinInfo = function(coinName, date = moment().format('DD-MM-YYYY')) {
                 var pngLogo = data.image.small
 
 
-                displayData(coinName, coinPrice, coinMarketCap, coinVolume, pngLogo, date, );
+                displayData(coinName, coinPrice, coinMarketCap, coinVolume, pngLogo, date);
 
 
             });
@@ -70,18 +70,56 @@ var coinInfo = function(coinName, date = moment().format('DD-MM-YYYY')) {
     });
 };
 
-var displayData = function(name, price = 0, marketCap = 0, volume = 0, logo = 0, date = moment().format('MMMM Do YYYY, h:mm:ss a')) {
+var displayChoosenData = function(name, price = 0, marketCap = 0, volume = 0, logo = 0, date = moment().format('MMMM Do YYYY, h:mm:ss a')) {
+    // create elements for the variables
+    var nameEl = document.createElement("p");
+    var priceEl = document.createElement("p");
+    var marketCapEl = document.createElement("p");
+    var volumeEl = document.createElement("p");
+    var dateEl = document.createElement("p");
+    var logoEl = document.createElement("img");
+    
+    // assign the values
+    nameEl.textContent = name;
+    priceEl.textContent = price;
+    marketCapEl.textContent = marketCap;
+    volumeEl.textContent = volume;
+    logoEl.value = logo;
+    
+    // make them the right sizes
+    nameEl.classList("col-5");
+    priceEl.classList("col-5");
+    logoEl.classList("col-2");
 
-    if (price != 0) {
-
-    };
-    if (logo != 0) {
-
-    };
-
+    searchedEl.appendChild(logoEl);
+    searchedEl.appendChild(nameEl);
+    searchedEl.appendChild(priceEl);
 
 
 };
+
+var displayTrendingData = function(name, price = 0, logo = 0) {
+    // create elements for the functions
+    var nameEl = document.createElement("p");
+    var priceEl = document.createElement("p");
+    var logoEl = document.createElement("img");
+    
+    // assign the values
+    nameEl.textContent = name;
+    priceEl.textContent = price;
+    logoEl.value = logo;
+    
+    // make them the right sizes
+    nameEl.classList("col-5");
+    priceEl.classList("col-5");
+    logoEl.classList("col-2");
+
+    trendingEl.appendChild(logoEl);
+    trendingEl.appendChild(nameEl);
+    trendingEl.appendChild(priceEl);
+
+};
+
 
 
 
