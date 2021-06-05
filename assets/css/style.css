@@ -5,9 +5,9 @@
 }
 
 :root {
-    --primary-color: black;
-    --secondary-color: #9ae36f;
-    --tertiary-color: #39a6b2;
+    --primary-color: #424540;
+    --secondary-color: #696969;
+    --tertiary-color: #a2c987;
 }
 
 body {
@@ -19,14 +19,13 @@ body {
 /* Header/ Navbar Styles Start */
 header {
     padding: 20px 35px;
-    background-color: #39a6b2;
+    background-color: #424540;
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
     position: -webkit-sticky;
     position: sticky;
     top: 0;
-    background-image: url("../images/hero-bg.jpg");
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -38,13 +37,13 @@ header h1 {
     font-weight: bold;
     margin: 0;
     font-size: 36px;
-    color: #fce138;
+    color: whitesmoke;
     text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 header a {
     text-decoration: none;
-    color:#fce138;
+    color:whitesmoke;
 }
 
 header nav {
