@@ -15,93 +15,93 @@ var apiUrl = "https://api.coingecko.com/api/v3/coins/" + coinName + "/history?da
 fetch(apiUrl).then(function(response) {
     // request was successful
     if (response.ok) {
-      response.json().then(function(data) {
-        console.log(data);
-        
-      });
-    } 
-  });
-
-  var apiUrl = "https://api.coingecko.com/api/v3/coins/list?include_platform=true";
-    
-  fetch(apiUrl).then(function(response) {
-      // request was successful
-      if (response.ok) {
         response.json().then(function(data) {
-          console.log(data[1].name);
-          
+            console.log(data);
+
         });
-      } 
-    });
+    }
+});
+
+var apiUrl = "https://api.coingecko.com/api/v3/coins/list?include_platform=true";
+
+fetch(apiUrl).then(function(response) {
+    // request was successful
+    if (response.ok) {
+        response.json().then(function(data) {
+            console.log(data[1].name);
+
+        });
+    }
+});
 
 var listOfCoins = function() {
-        // List of all coins
-        var apiUrl = "https://api.coingecko.com/api/v3/coins/list?include_platform=true";
-    
+    // List of all coins
+    var apiUrl = "https://api.coingecko.com/api/v3/coins/list?include_platform=true";
+
     fetch(apiUrl).then(function(response) {
-      // request was successful
+        // request was successful
         if (response.ok) {
-          response.json().then(function(data) {
-            console.log(data[1].name);
-            // Loop through all coins
-            for (i = 0; i < data.length; i++){ 
-                var coinName = data[i].name
-                
-                displayData(coinName);
-                
-            };
-          });
-        } 
-    });          
+            response.json().then(function(data) {
+                console.log(data[1].name);
+                // Loop through all coins
+                for (i = 0; i < data.length; i++) {
+                    var coinName = data[i].name
+
+                    displayData(coinName);
+
+                };
+            });
+        }
+    });
 };
 
 
 var trendingCoins = function() {
     // List of the top 7 trending coins
     var apiUrl = "https://api.coingecko.com/api/v3/search/trending";
-    
+
     fetch(apiUrl).then(function(response) {
         // request was successful
         if (response.ok) {
-          response.json().then(function(data) {
-            console.log(data);
-            // Loop through the seven trending coins
-            for (i = 0; i < 7; i++){ 
-                var coinName = data.coins[i].name
-                var coinPrice = data.coins[i].price_btc
-                var largePng = data.coins[i].large
-                
-                displayData(coinName, coinPrice, largePng);
-                
-            };
-          });
-        } 
-      });
+            response.json().then(function(data) {
+                console.log(data);
+                // Loop through the seven trending coins
+                for (i = 0; i < 7; i++) {
+                    var coinName = data.coins[i].name
+                    var coinPrice = data.coins[i].price_btc
+                    var largePng = data.coins[i].large
+
+                    displayData(coinName, coinPrice, largePng);
+
+                };
+            });
+        }
+    });
 };
 
-var coinInfo = function(coinName, date = moment().format('DD-MM-YYYY') ) {
+var coinInfo = function(coinName, date = moment().format('DD-MM-YYYY')) {
     // Info on a specific coin and date
     var apiUrl = "https://api.coingecko.com/api/v3/coins/" + coinName + "/history?date=" + date + "&localization=false"
 
     fetch(apiUrl).then(function(response) {
         // request was successful
         if (response.ok) {
-          response.json().then(function(data) {
-            console.log(data);
-            
-            var coinName = data.name
-            var coinPrice = data.market_data.current_price.usd
-            var coinMarketCap = data.market_data.market_cap.usd
-            var coinVolume = data.market_data.total_volume.usd
-            var pngLogo = data.image.small
-            
+            response.json().then(function(data) {
+                console.log(data);
 
-            displayData(coinName, coinPrice, coinMarketCap, coinVolume, pngLogo, date, );
-                
-            
-          });
-        } 
-      });
+                var coinName = data.name
+                var coinPrice = data.market_data.current_price.usd
+                var coinMarketCap = data.market_data.market_cap.usd
+                var coinVolume = data.market_data.total_volume.usd
+                var pngLogo = data.image.small
+
+
+                displayData(coinName, coinPrice, coinMarketCap, coinVolume, pngLogo, date, );
+
+
+            });
+        }
+    });
 };
 
 var displayData = function(name, price = 0, marketCap, volume, logo = 0, date = moment().format('MMMM Do YYYY, h:mm:ss a')) {
@@ -112,7 +112,83 @@ var displayData = function(name, price = 0, marketCap, volume, logo = 0, date = 
     if (logo != 0) {
 
     };
-    
 
 
+
+};
+
+
+
+var nytApiKey = "LCyA6VYEUWEMBexw7HmmAlPdPJopvG9G";
+var keyWord = "";
+
+
+var renderNews = function() {
+    var keywordSearchForm = document.createElement("form");
+    keywordSearchForm.setAttribute("id", "input-form");
+
+    var inputLabel = document.createElement("label");
+    inputLabel.setAttribute("for", "keyword-text");
+
+    var inputText = document.createElement("input");
+    inputText.setAttribute("id", "keyword-text");
+    inputText.setAttribute("type", "text");
+    inputText.setAttribute("name", "keyword-text");
+    inputText.setAttribute("placeholder", "Enter individual keywords, i.e. 'bitcoin' ");
+    inputText.setAttribute("style", "padding-left: 25px;")
+
+    var inputSubmit = document.createElement("input");
+    inputSubmit.setAttribute("id", "submit-keyword");
+    inputSubmit.setAttribute("type", "submit");
+    inputSubmit.setAttribute("value", "submit");
+
+    keywordSearchForm.append(inputLabel, inputText, inputSubmit);
+
+    var mainFormDiv = document.querySelector("#form-row");
+    mainFormDiv.append(keywordSearchForm);
+
+    console.log("Rendered form.");
+
+    var searchKeyword = document.querySelector("#submit-keyword");
+    searchKeyword.addEventListener("click", function(event) {
+        event.preventDefault();
+        keyWord = document.getElementById("keyword-text").value;
+        console.log("keyword: ", keyWord);
+        fetchNYT();
+    });
+};
+
+
+var fetchNYT = function() {
+
+    var nytApiKey = "LCyA6VYEUWEMBexw7HmmAlPdPJopvG9G";
+    var apiUrl = "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=" + keyWord + "&api-key=" + nytApiKey;
+
+    console.log("keyword in fetchNYT function: ", keyWord);
+    console.log("apiUrl search value: ", apiUrl);
+    fetch(apiUrl).then(function(response) {
+        console.log(response);
+
+        return response.json();
+    }).then(function(article) {
+        console.log(article);
+        var articles = document.querySelector("#article-row");
+        articles.className = "col-6 bg-ligh text-dark align-right";
+        for (var i = 0; i < 5; i++) {
+            var articleLink = document.createElement("h6");
+            var articleHeadline = document.createElement("a");
+            if (article.response.docs[i].headline.print_headline) {
+                articleHeadline.setAttribute("href", article.response.docs[i].web_url);
+                articleHeadline.textContent = article.response.docs[i].headline.print_headline;
+            } else if (article.response.docs[i].snippet) {
+                articleHeadline.setAttribute("href", article.response.docs[i].web_url);
+                articleHeadline.textContent = article.response.docs[i].snippet;
+            } else {
+                return;
+            }
+
+            articleLink.append(articleHeadline);
+            articles.append(articleLink);
+        }
+    })
 };
