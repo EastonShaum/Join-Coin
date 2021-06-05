@@ -119,6 +119,11 @@ var displayData = function(name, price = 0, marketCap = 0, volume = 0, logo = 0,
 
 
 
+
+
+
+
+
 var nytApiKey = "LCyA6VYEUWEMBexw7HmmAlPdPJopvG9G";
 var keyWord = "";
 
