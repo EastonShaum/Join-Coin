@@ -1,0 +1,36 @@
+header {
+  color: #F3f3f3;
+  background-color: #696969;
+}
+
+header h1 {
+  font-weight: 600;
+  padding: 5px 5px 5px 10px;
+  border-radius: 5px;
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+}
+
+.nav-list {
+  list-style: none;
+}
+
+.nav-list li {
+  display: inline;
+  margin: 0px 5px 0px 5px;
+  font-size: 18px;
+}
+
+nav a {
+  color: #F3f3f3;
+  text-decoration: none;
+  padding: 5px;
+}
+
+nav a:hover {
+  text-decoration: none;
+  border-bottom: solid;
+  border-color: #2aa145;
+  border-width: 2px;
+  color: #F3f3f3;
+}
