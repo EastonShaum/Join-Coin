@@ -1,24 +1,30 @@
 header {
   color: #F3f3f3;
   background-color: #696969;
+  padding: 20px 35px;
 }
 
 header h1 {
   font-weight: 600;
   padding: 5px 5px 5px 10px;
   border-radius: 5px;
+  display: inline;
   border-top-left-radius: 0px;
   border-bottom-left-radius: 0px;
 }
 
+nav {
+  float: right;
+  margin: 5px;
+}
 .nav-list {
   list-style: none;
 }
 
 .nav-list li {
-  display: inline;
   margin: 0px 5px 0px 5px;
   font-size: 18px;
+  display: inline;
 }
 
 nav a {
