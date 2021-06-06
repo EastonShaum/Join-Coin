@@ -127,6 +127,28 @@ var renderNews = function() {
 };
 
 
+var saveKeyword = function(keyWord) {
+    var searchedCoins = [];
+    if (keyWord) {
+        searchedCoins.push(keyWord);
+        if (keyWord.length > 5) {
+            searchedCoins.pop();
+            console.log(searchedCoins);
+        }
+        localStorage.setItem("searchedCoins", JSON.stringify(searchedCoins));
+    } else {
+        console.log("No keyword saved.");
+    }
+    searchedCoins = [];
+};
+
+var getSavedCoins = function() {
+    var searchedCoins = JSON.parse(localStorage.getItem("searchedCoins"));
+    var randomSearch = searchedCoins[Math.floor(Math.random() * searchedCoins.length)];
+    fetchNYT(randomSearch);
+};
+
+
 var displayNytArticles = function(article) {
 
     var articles = document.querySelector("#article-row");
