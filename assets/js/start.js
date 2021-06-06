@@ -121,6 +121,7 @@ var renderNews = function() {
         var articles = document.querySelector("#article-row");
         articles.innerHTML = "";
         keyWord = inputText.value;
+        saveKeyword(keyWord);
         fetchNYT(keyWord);
         inputText.value = "";
     });
