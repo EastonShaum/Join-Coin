@@ -115,22 +115,23 @@ var renderNews = function() {
     var mainFormDiv = document.querySelector("#form-row");
     mainFormDiv.append(keywordSearchForm);
 
-    console.log("Rendered form.");
-
     var searchKeyword = document.querySelector("#submit-keyword");
     searchKeyword.addEventListener("click", function(event) {
         event.preventDefault();
-        keyWord = document.getElementById("keyword-text").value;
-        console.log("keyword: ", keyWord);
+        var articles = document.querySelector("#article-row");
+        articles.innerHTML = "";
+        keyWord = inputText.value;
         fetchNYT(keyWord);
-        // fetchGuardian(keyWord);
+        inputText.value = "";
     });
 };
 
 
 var displayNytArticles = function(article) {
+
     var articles = document.querySelector("#article-row");
     articles.className = "col-6 bg-ligh text-dark align-right";
+
     for (var i = 0; i < 5; i++) {
         var articleLink = document.createElement("h6");
         var articleHeadline = document.createElement("a");
@@ -173,7 +174,6 @@ var fetchNYT = function() {
     var apiUrl = "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=" + keyWord + "&api-key=" + nytApiKey;
 
     fetch(apiUrl).then(function(response) {
-        console.log("First .then() NYT")
         if (response.ok) {
             response.json().then(function(article) {
                 displayNytArticles(article);
@@ -191,10 +191,8 @@ var fetchGuardian = function() {
     var guardianApiKey = "40d21f00-7384-4c14-92a3-12ba0e8591ab";
 
     fetch(apiUrl).then(function(response) {
-        console.log("Fist .then() in fetchGuardian")
         if (response.ok) {
             response.json().then(function(article) {
-                console.log("response.ok branch guardian.");
                 displayGuardianArticles(article);
             })
         } else {
