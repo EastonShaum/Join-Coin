@@ -1,10 +1,5 @@
-<< << << < HEAD
-    ===
-    === =
-    var trendingEl = document.getElementById("");
+var trendingEl = document.getElementById("");
 
->>>
->>> > develop
 var listOfCoins = function() {
     // List of all coins
     var apiUrl = "https://api.coingecko.com/api/v3/coins/list?include_platform=true";
@@ -132,13 +127,8 @@ var displayTrendingData = function(name, price = 0, logo = 0) {
 
 
 
-<<
-<< << < HEAD
-    ===
-    === =
 
-    var nytApiKey = "LCyA6VYEUWEMBexw7HmmAlPdPJopvG9G"; >>>
->>> > develop
+
 var keyWord = "";
 
 
@@ -224,24 +214,6 @@ var displayNytArticles = function(article) {
     }
 };
 
-var displayGuardianArticles = function(article) {
-    var articles = document.querySelector("#article-row");
-    articles.className = "col-6 bg-ligh text-dark align-right";
-    for (var i = 0; i < 5; i++) {
-        var articleLink = document.createElement("h6");
-        var articleHeadline = document.createElement("a");
-        if (article.results[0].webTitle) {
-            articleHeadline.setAttribute("href", article.results[0].webUrl);
-            articleHeadline.textContent = article.results[0].webTitle;
-        } else {
-            return;
-        }
-
-        articleLink.append(articleHeadline);
-        articles.append(articleLink);
-    }
-};
-
 var fetchNYT = function() {
 
     var nytApiKey = "LCyA6VYEUWEMBexw7HmmAlPdPJopvG9G";
@@ -259,21 +231,21 @@ var fetchNYT = function() {
 };
 
 
-var fetchGuardian = function() {
+// var fetchGuardian = function() {
 
-    var apiUrl = "https://content.guardianapis.com/search?q=" + keyWord + "&api-key=" + guardianApiKey;
-    var guardianApiKey = "40d21f00-7384-4c14-92a3-12ba0e8591ab";
+//     var apiUrl = "https://content.guardianapis.com/search?q=" + keyWord + "&api-key=" + guardianApiKey;
+//     var guardianApiKey = "40d21f00-7384-4c14-92a3-12ba0e8591ab";
 
-    fetch(apiUrl).then(function(response) {
-        if (response.ok) {
-            response.json().then(function(article) {
-                displayGuardianArticles(article);
-            })
-        } else {
-            console.log("Error fetching from Guardian.", response);
-        }
-    })
-};
+//     fetch(apiUrl).then(function(response) {
+//         if (response.ok) {
+//             response.json().then(function(article) {
+//                 displayGuardianArticles(article);
+//             })
+//         } else {
+//             console.log("Error fetching from Guardian.", response);
+//         }
+//     })
+// };
 
 
 
