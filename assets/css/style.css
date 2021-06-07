@@ -224,7 +224,7 @@ section {
     display: block;
     padding: 7px 15px;
     font-size: 16px;
-    color: #024e76;
+    color: 424540;
     width: 100%;
     margin-bottom: 15px;
     border-radius: 10px;
@@ -286,16 +286,16 @@ background-color: #696969;
 }
 /* About Us/Crypto Styles End */
 
-/* What You Do Styles Start */
+/* Step Styles Start */
 .steps {
-    background: #fce138;
+    background: #696969;
 }
 
 .step {
     margin: 50px auto;
     padding-bottom: 50px;
     width: 80%;
-    border-bottom: 1px solid #39a6b2;
+    border-bottom: 1px solid #a2c987;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -307,7 +307,7 @@ background-color: #696969;
 }
 
 .step h3 {
-    color: #024e76;
+    color: whitesmoke;
     font-size: 46px;
     flex: 1 30%;
 }
@@ -334,35 +334,31 @@ background-color: #696969;
 }
 
 .step-text p {
-    color: #39a6b2;
+    color: whitesmoke;
     font-size: 18px;
 }
 
 .step-text h4 {
     font-size: 26px;
     line-height: 1.5;
-    color: #024e76;
+    color: whitesmoke;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
-/* What You Do Styles End */
+/* Steps Styles End */
 
 /* A Quick Look Styles Start */
 .following {
     width: 100%;
     margin: 0 auto;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-gap: 50px;
 }
 
 .snapshot {
     margin: 20px;
     background: #696969;
     color: whitesmoke;
-    flex: 1;
-}
-
-.snapshot img {
-    width: 100%;
 }
 
 .snapshot-info {
@@ -372,12 +368,14 @@ background-color: #696969;
 
 .snapshot-info h3 {
     font-size: 28px;
+    padding-bottom: 6px;
 }
 
 .snapshot-info p {
     font-size: 17px;
 }
-/* Meet The Trainers Styles End */
+
+/* Quick Look Styles End */
 
 /*REACH OUT STYLES START */
 .contact {
