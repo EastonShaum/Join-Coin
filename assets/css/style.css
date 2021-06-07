@@ -508,8 +508,9 @@ background-color: #696969;
         width: 80%;
     }
 
-    .trainer {
-        flex: 0 70%;
+    .following {
+        display: flex;
+        flex-direction: column;
     }
 
     .contact-info iframe {
@@ -565,7 +566,7 @@ background-color: #696969;
         width: 100%;
     }
 
-    .trainer {
+    .following {
         flex: 0 100%;
     }
 
