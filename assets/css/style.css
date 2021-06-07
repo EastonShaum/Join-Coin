@@ -78,7 +78,7 @@ header nav ul li a:hover {
 
 /* Footer Style Starts */
 footer {
-    background: #696969;
+    background: #424540;
     width: 100%;
     padding: 40px 35px;
     display: flex;
@@ -88,7 +88,7 @@ footer {
 
 footer h2 {
     color: whitesmoke;
-    font-size: 25px;
+    font-size: 30px;
     margin: 0;
 }
 
@@ -379,11 +379,11 @@ background-color: #696969;
 
 /*REACH OUT STYLES START */
 .contact {
-    background: #024e76;
+    background: #696969;
 }
 
 .contact h2 {
-    color: #fce138;
+    color: whitesmoke;
 }
 
 .contact-info {
@@ -406,8 +406,12 @@ background-color: #696969;
 }
 
 .contact-info h3 {
-    color: #fce138;
+    color: whitesmoke;
     font-size: 32px;
+}
+
+.contact-info address a {
+  color: #a2c987;
 }
 
 .contact-info p, .contact-info address {
@@ -418,11 +422,11 @@ background-color: #696969;
 }
 
 .contact-form input, .contact-form textarea {
-    border: 1px solid #024e76;
+    border: 1px solid #424540;
     display: block;
     padding: 7px 15px;
     font-size: 16px;
-    color: #024e76;
+    color: whitesmoke;
     width: 100%;
     margin-bottom: 15px;
     margin-top: 5px;
@@ -438,8 +442,8 @@ background-color: #696969;
 .contact-form button {
     width: 100%;
     border: none;
-    background: #fce138;
-    color: #024e76;
+    background: #a2c987;
+    color: whitesmoke;
     text-align: center;
     padding: 15px 0;
     font-size: 16px;
@@ -447,8 +451,8 @@ background-color: #696969;
 }
 
 .contact-form button:hover {
-    color: #fce138;
-    background: #39a6b2;
+    color: whitesmoke;
+    background: #424540;
 }
 
 .contact-info a {
