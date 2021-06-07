@@ -12,7 +12,7 @@
 
 body {
 /* Main body style start */
-    color: #39a6b2;
+    color: #a2c987;
     font-family: Helvetica, Arial, sans-serif;
 }
 
@@ -78,7 +78,7 @@ header nav ul li a:hover {
 
 /* Footer Style Starts */
 footer {
-    background: #fce138;
+    background: #696969;
     width: 100%;
     padding: 40px 35px;
     display: flex;
@@ -87,8 +87,8 @@ footer {
 }
 
 footer h2 {
-    color: #024e76;
-    font-size: 30px;
+    color: whitesmoke;
+    font-size: 25px;
     margin: 0;
 }
 
@@ -98,7 +98,7 @@ footer div {
 }
 
 footer a {
-    color: #024e76;
+    color: whitesmoke;
 }
 /*Footer Style Ends */
 
@@ -123,7 +123,7 @@ section {
     width: 35%;
     text-align: right;
     margin: 3.5%;
-    color: #fff;
+    color: whitesmoke;
     font-size: 18px;
     line-height: 1.2;
 }
@@ -131,15 +131,15 @@ section {
 .hero-cta h2 {
     font-style: italic;    
     font-size: 55px;
-    color: #fce138;
+    color: whitesmoke;
     text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 .hero-form {
-    border: 3px solid #024e76;
-    background-color: rgba(252, 225, 56, 0.8);
+    border: 3px solid whitesmoke;
+    background-color: rgba(152, 201, 135, 0.8);
     padding: 20px;
-    color: #024e76;
+    color: whitesmoke;
     width: 40%;
     margin: 3.5%;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
@@ -162,7 +162,7 @@ section {
     height: 20px;
     width: 20px;
     background: rgba(255, 255, 255, 0.75);  
-    border: 1px solid #024e76;  
+    border: 1px solid whitesmoke;  
     position: absolute;
     top: -4px;
     left: -30px;
@@ -177,19 +177,19 @@ section {
     width: 20px;
     height: 20px;
     border-radius: 50%;
-    background: #024e76;
+    background: whitesmoke;
     position: absolute;
     left: -29px;
     top: -3px;
-    background-image: radial-gradient(circle, #39a6b2, #024e76);
+    background-image: radial-gradient(circle, #a2c987, #424540);
 }
   
 .checkbox-wrapper label::after {
     content: "";
     height: 6px;
     width: 14px;
-    border-left: 2px solid #024e76;
-    border-bottom: 2px solid #024e76;
+    border-left: 2px solid #696969;
+    border-bottom: 2px solid #696969;
     position: absolute;
     left: -26px;
     top: 1px;
@@ -207,7 +207,7 @@ section {
 }
 
 .hero-form button:hover {
-    background-color: #39a6b2;  
+    background-color: #424540;  
 }
 
 .hero-form h3 {
@@ -220,7 +220,7 @@ section {
 }
 
 .form-input {
-    border: 1px solid #024e76;
+    border: 1px solid #696969;
     display: block;
     padding: 7px 15px;
     font-size: 16px;
@@ -241,8 +241,8 @@ section {
 }
 
 .hero-form button {
-    color: #fce138;
-    background-color: #024e76;
+    color: whitesmoke;
+    background-color: #696969;
     border: none;
     padding: 10px 20px;
     font-size: 16px;
@@ -404,7 +404,7 @@ background-color: #696969;
 }
 
 .contact-info div {
-    color: white;
+    color: whitesmoke;
 }
 
 .contact-info h3 {
@@ -467,8 +467,12 @@ background-color: #696969;
     text-align: right;
 }
 
-.flex-row{
+.flex-row {
     display: flex;
+}
+
+.flex-row p {
+  padding-bottom: 150px;
 }
 
 /* MEDIA QUERY FOR SMALLER DESKTOP SCREENS AND SMALLER */
