@@ -1,4 +1,5 @@
 var trendingEl = document.getElementById("trending");
+var searchedEl = document.getElementById("searched");
 
 
 
@@ -95,7 +96,7 @@ var coinInfo = function(coinName, date = moment().format('DD-MM-YYYY')) {
                 var pngLogo = data.image.small
 
 
-                displayData(coinName, coinPrice, coinMarketCap, coinVolume, pngLogo, date);
+                displayChoosenData(coinName, coinPrice, coinMarketCap, coinVolume, pngLogo);
 
 
             });
@@ -105,12 +106,17 @@ var coinInfo = function(coinName, date = moment().format('DD-MM-YYYY')) {
 
 var displayChoosenData = function(name, price = 0, marketCap = 0, volume = 0, logo = 0, date = moment().format('MMMM Do YYYY, h:mm:ss a')) {
     // create elements for the variables
+    var infoEl = document.createElement("li");
     var nameEl = document.createElement("p");
     var priceEl = document.createElement("p");
     var marketCapEl = document.createElement("p");
     var volumeEl = document.createElement("p");
     var dateEl = document.createElement("p");
     var logoEl = document.createElement("img");
+
+    if (price > 0.001) {
+        price = price.toFixed(2);
+    }
 
     // assign the values
     nameEl.textContent = name;
@@ -119,14 +125,31 @@ var displayChoosenData = function(name, price = 0, marketCap = 0, volume = 0, lo
     volumeEl.textContent = volume;
     logoEl.value = logo;
 
-    // make them the right sizes
-    nameEl.classList("col-5");
-    priceEl.classList("col-5");
-    logoEl.classList("col-2");
+    // assign classes
+    nameEl.classList = ("coinList");
+    priceEl.classList = ("coinList");
+    logoEl.classList = ("coinList");
+    marketCapEl.classList = ("coinList");
+    volumeEl.classList = ("coinList");
+    dateEl.classList = ("coinList");
+    logoEl.height = 50;
 
-    searchedEl.appendChild(logoEl);
-    searchedEl.appendChild(nameEl);
-    searchedEl.appendChild(priceEl);
+    // make them the right sizes
+    // nameEl.classList("col-5");
+    // priceEl.classList("col-5");
+    // logoEl.classList("col-2");
+
+    infoEl.appendChild(logoEl);
+    infoEl.appendChild(nameEl);
+    infoEl.appendChild(priceEl);
+    infoEl.appendChild(marketCapEl);
+    infoEl.appendChild(volumeEl);
+    infoEl.appendChild(dateEl);
+
+    
+
+
+    searchedEl.appendChild(infoEl);
 
 
 };
