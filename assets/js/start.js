@@ -1,5 +1,7 @@
 var trendingEl = document.getElementById("trending");
 
+var searchedCoins = [];
+var tempSearchedCoins = [];
 
 
 var listOfCoins = function() {
