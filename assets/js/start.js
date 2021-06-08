@@ -181,6 +181,12 @@ bitcoinPrice();
 var coinName = "";
 
 
+
+var coinName = "";
+
+console.log("call getSavedCoins");
+getSavedCoins();
+
 var renderNews = function() {
     console.log("renderNews start");
 
