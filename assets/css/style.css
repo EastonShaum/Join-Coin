@@ -478,6 +478,12 @@ background-color: #696969;
   padding-bottom: 150px;
 }
 
+/* For coin display */
+.coinList {
+    display: inline-block;
+    padding-right: 10px;
+}
+
 /* MEDIA QUERY FOR SMALLER DESKTOP SCREENS AND SMALLER */
 @media screen and (max-width: 980px) {
     header {

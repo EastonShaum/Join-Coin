@@ -1,4 +1,6 @@
-var trendingEl = document.getElementById("");
+var trendingEl = document.getElementById("trending");
+
+
 
 var listOfCoins = function() {
     // List of all coins
@@ -22,7 +24,7 @@ var listOfCoins = function() {
 };
 
 
-var trendingCoins = function() {
+var trendingCoins = function(bitcoinPrice) {
     // List of the top 7 trending coins
     var apiUrl = "https://api.coingecko.com/api/v3/search/trending";
 
@@ -33,13 +35,44 @@ var trendingCoins = function() {
                 console.log(data);
                 // Loop through the seven trending coins
                 for (i = 0; i < 7; i++) {
-                    var coinName = data.coins[i].name
-                    var coinPrice = data.coins[i].price_btc
-                    var largePng = data.coins[i].large
+                    var coinName = data.coins[i].item.name
+                    var coinPrice = data.coins[i].item.price_btc
+                    var largePng = data.coins[i].item.large
+                    
+
+                    
+                    console.log(bitcoinPrice);
+                    
+                    
+                    coinPrice = coinPrice * bitcoinPrice;
+                    //console.log(coinName)
+                    //console.log(coinPrice)
+
+                    //console.log(largePng)
 
                     displayTrendingData(coinName, coinPrice, largePng);
 
                 };
+            });
+        }
+    });
+};
+
+var bitcoinPrice = function(date = moment().format('DD-MM-YYYY')) {
+    // Info on a specific coin and date
+    var apiUrl = "https://api.coingecko.com/api/v3/coins/bitcoin/history?date=" + date + "&localization=false"
+
+    fetch(apiUrl).then(function(response) {
+        // request was successful
+        if (response.ok) {
+            response.json().then(function(data) {
+                //console.log(data);
+
+                var bitcoin = data.market_data.current_price.usd
+                //console.log(date);
+                //console.log(bitcoin);
+                trendingCoins(bitcoin);
+
             });
         }
     });
@@ -100,29 +133,43 @@ var displayChoosenData = function(name, price = 0, marketCap = 0, volume = 0, lo
 
 var displayTrendingData = function(name, price = 0, logo = 0) {
     // create elements for the functions
+    var coinEl = document.createElement("li");
     var nameEl = document.createElement("p");
     var priceEl = document.createElement("p");
     var logoEl = document.createElement("img");
 
+    if (price > 0.001) {
+        price = price.toFixed(2);
+    }
+    
+
     // assign the values
     nameEl.textContent = name;
     priceEl.textContent = price;
-    logoEl.value = logo;
+    logoEl.src = logo;
+
+    // assign classes
+    nameEl.classList = ("coinList");
+    priceEl.classList = ("coinList");
+    logoEl.classList = ("coinList");
+    logoEl.height = 25;
 
     // make them the right sizes
-    nameEl.classList("col-5");
-    priceEl.classList("col-5");
-    logoEl.classList("col-2");
+    // nameEl.classList("col-5");
+    // priceEl.classList("col-5");
+    // logoEl.classList("col-2");
 
-    trendingEl.appendChild(logoEl);
-    trendingEl.appendChild(nameEl);
-    trendingEl.appendChild(priceEl);
+    coinEl.appendChild(logoEl);
+    coinEl.appendChild(nameEl);
+    coinEl.appendChild(priceEl);
+
+    trendingEl.appendChild(coinEl);
+    //console.log(coinEl)
 
 };
 
-
-
-
+bitcoinPrice();
+//trendingCoins();
 
 
 
