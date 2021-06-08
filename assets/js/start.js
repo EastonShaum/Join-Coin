@@ -1,4 +1,5 @@
 var trendingEl = document.getElementById("");
+var searchedCoins = [];
 
 var listOfCoins = function() {
     // List of all coins
@@ -169,25 +170,86 @@ var renderNews = function() {
 };
 
 
-var saveKeyword = function(keyWord) {
-    var searchedCoins = [];
-    if (keyWord) {
-        searchedCoins.push(keyWord);
-        if (keyWord.length > 5) {
-            searchedCoins.pop();
-            console.log(searchedCoins);
-        }
-        localStorage.setItem("searchedCoins", JSON.stringify(searchedCoins));
-    } else {
-        console.log("No keyword saved.");
+var saveKeyword = function(keyWord, tempSearchedCoins) {
+    if (tempSearchedCoins) {
+        searchedCoins = tempSearchedCoins;
     }
-    searchedCoins = [];
+
+    if (searchedCoins.includes(keyWord)) {
+        console.log("Search already an array element.");
+        return;
+    } else {
+        searchedCoins.push(keyWord);
+    }
+
+    if (searchedCoins.length > 5) {
+        searchedCoins.shift();
+    }
+
+    getLocationDetails(query);
+
+    localStorage.setItem("searchedCoins", JSON.stringify(searchedCoins));
 };
 
 var getSavedCoins = function() {
-    var searchedCoins = JSON.parse(localStorage.getItem("searchedCoins"));
-    var randomSearch = searchedCoins[Math.floor(Math.random() * searchedCoins.length)];
+    var tempSearchedCoins = JSON.parse(localStorage.getItem("searchedCoins"));
+
+    var randomSearch = tempSearchedCoins[Math.floor(Math.random() * tempSearchedCoins.length)];
     fetchNYT(randomSearch);
+
+    if (tempSearchedCoins) {
+        var listCoins = document.getElementById("");
+
+        for (var i = 0; i < tempSearchedCoins.length; i++) {
+            var listItem = document.createElement("li");
+            listItem.className("list-group-item");
+
+            var listButton = document.createElement("button");
+            listButton.className = "btn btn-outline-success my-2 my-sm-0";
+            listButton.setAttribute("type", "submit");
+            listButton.setAttribute("id", "coin-" + [i]);
+            listButton.textContent = tempSavedCities[i];
+
+            listItem.append(listButton);
+            list.append(listItem);
+        }
+
+        var index = tempSearchedCoins.length - 1;
+        coinInfo(tempSearchedCoins[index]);
+    } else {
+        // display modal alert
+        var modalAlert = document.createElement("div");
+        modalAlert.setAttribute("id", "modal-body");
+        modalAlert.className = "modal";
+
+        var modalContent = document.createElement("div");
+        modalContent.setAttribute("id", "modal-content");
+
+        var modalClose = document.createElement("span");
+        modalClose.setAttribute("id", "close-modal");
+        modalClose.textContent = "&Times;";
+
+        var modalText = document.createElement("p");
+        modalText.setAttribute("id", "modal-text");
+        modalText.textContent = "No previously searched coins."
+
+        modalContent.append(modalClose, modalText);
+        modalAlert.append(modalContent);
+
+        return;
+    }
+
+    var coin1 = document.getElementById("coin-0");
+    var coin2 = document.getElementById("coin-1");
+    var coin3 = document.getElementById("coin-2");
+    var coin4 = document.getElementById("coin-3");
+    var coin5 = document.getElementById("coin-4");
+
+    if (coin1) {
+        coin1.addEventListener("click", function(event) {
+            event.preventDefault();
+        });
+    }
 };
 
 
@@ -229,23 +291,6 @@ var fetchNYT = function() {
         }
     })
 };
-
-
-// var fetchGuardian = function() {
-
-//     var apiUrl = "https://content.guardianapis.com/search?q=" + keyWord + "&api-key=" + guardianApiKey;
-//     var guardianApiKey = "40d21f00-7384-4c14-92a3-12ba0e8591ab";
-
-//     fetch(apiUrl).then(function(response) {
-//         if (response.ok) {
-//             response.json().then(function(article) {
-//                 displayGuardianArticles(article);
-//             })
-//         } else {
-//             console.log("Error fetching from Guardian.", response);
-//         }
-//     })
-// };
 
 
 
