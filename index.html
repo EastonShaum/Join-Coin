@@ -1,53 +1,338 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>API Fetch</title>
+        <title>JoinCoin</title>
+          
+            <!-- Temporarily commenting these until html is built and style sheet flow is established -->
+            <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+            <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+            <link rel="preconnect" href="https://fonts.gstatic.com">
+            <link href="https://fonts.googleapis.com/css2?family=Newsreader:wght@300&display=swap" rel="stylesheet"/> -->
+            <link rel="stylesheet" href='assets/css/style.css'/>
+            
 
-    <!--<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">-->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Newsreader:wght@300&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href='assets/css/style.css' />
+    </head>
+    <body>
+        <!-- navigation -->
+        <header>
+            <h1>
+                <a href="/">JoinCoin</a>
+            </h1>
+            <nav>
+                <ul>
+                    <li>
+                        <a href="#about-us"> About Us</a>
+                    </li>
+                    <li>
+                        <a href="#about-crypto">About Crypto</a>
+                    </li>
+                    <li>
+                        <a href="#quick-look">Quick Look</a>
+                    </li>
+                    <li>
+                        <a href="#learn-more">Learn More</a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        <!-- hero/jumbotron -->
+        <section class="hero">
+            <div class="hero-cta">
+                <h2>
+                    This is filler
+                </h2>
+                <p>
+                    I didn't want to remove this just yet as it is a place holder for my structure. Maybe you guys want to you use it? No idea but it is here just in case and feel free to change it or tell me to change it. Whatever works for me, I just wanted to make sure we has something to put to use. Thank you for your consideration. (: <br />
+                    Also, I don't think I like this picture, feel free to share another if you find one. I do not like how we can't read any of this text because of the busy background.
+                </p>
+            </div>
 
 
+            <div class="hero-form">
+                <h3>This Too is Filler</h3>
+                <p>More filler, I just wasn't ready to delete the code.</p>
+            <!-- Add form element -->
+            <form>
+                <label for="name"> Enter full name:</label>
+                <input type="text" placeholder="Your Name" name="name" id="name" class="form-input"/>
+                <label for="email"> Enter email address:</label>
+                <input type="email" placeholder="Email Address" name="email" id="email" class="form-input"/>
+                <label for="phone"> Enter a telephone number:</label>
+                <input type="tel" placeholder="Phone Number" name="phone" id="phone" class="form-input"/>
+                <p>
+                    Have you worked as a Coder before?
+                    <span class="radio-wrapper">
+                        <input type="radio" name="coder-confirm" id="coder-yes" />
+                        <label for="coder-yes">Yes</label>
+                    </span>
+                    <span class="radio-wrapper">
+                        <input type="radio" name="coder-confirm" id="coder-no" />
+                        <label for="coder-no">No</label>
+                    </span>
+                </p>
+                <p>
+                    <span class="checkbox-wrapper">
+                        <input type="checkbox" name="age-confirm" id="checkbox" />
+                        <label for="checkbox">I acknowledge that I am at least 18 years of age.</label>
+                    </span>
+                </p>
+                <button type="submit">
+                    Get Coding!
+                </button>
+            </form>
+            </div>
+        </section>
+        <!-- end hero -->
 
-</head>
+        <!-- "about us" section -->
+        <!-- Section title -->
+        <section id="about-us" class="intro">
+            <div class="flex-row">
+                <h2 class="section-title primary-border">
+                    About Us
+                </h2>
+            </div>
 
-<body>
-    <header class="header">
-        <h1><i class="fab fa-bitcoin"></i> JoinCoin</h1>
-        <nav>
-            <ul class="nav-list">
-                <li>
-                    <a href="#about-us">About Us</a>
-                </li>
-                <li>
-                    <a href="#about-crypto">About Crypto</a>
-                </li>
-                <li>
-                    <a href="#quick-look">Quick Look</a>
-                </li>
-                <li>
-                    <a href="#learn-more">Learn More</a>
-                </li>
-            </ul>
-        </nav>
-    </header>
+            <div class="flex-row">
+                <p>
+                    If you’re new to cryptocurrency, there is a good chance that you might find the idea of it super confusing. The good news is that you’re not alone! Crypto is a pretty complicated subject. Not to worry, though. Our goal is to present cryptocurrency to you in a way that is simple, and accessible. Whether you have some experience with crypto or none at all, we can help introduce you to the world of cryptocurrency as straightforward as possible. We will show you examples of different currencies and how they are performing, as well as give you resources to learn even more about specific currencies and crypto as a whole.
+                </p>
+            </div>    
+        </section>
 
-    <main class="main-content" style="margin-left: 10; padding-left: 5; word-wrap: normal;">
-        <div class="row" id="form-row" style="padding-left: 10;"></div>
-        <div class="row" id="article-row">
-        </div>
-    </main>
+        <!-- "about crypto" section -->
+        <!-- Section title -->
+        <section id="about-crypto" class="intro">
+            <div class="flex-row">
+                <h2 class="section-title primary-border">
+                    About Crypto
+                </h2>
+            </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-    <script src="./assets/js/start.js"></script>
-</body>
+            <div class="flex-row">
+                <p>
+                    butcher selfies chambray shabby chic gentrify readymade yr Echo Park XOXO Tumblr normcore Banksy direct trade Blue Bottle chillwave you probably haven't heard of them single-origin coffee Vice fanny pack fixie Odd Future Austin fingerstache pickled twee synth Wes Anderson Thundercats viral bitters flannel meggings narwhal Marfa Schlitz sustainable Intelligentsia umami deep v craft
+                </p>
+            </div>    
+        </section>
+
+        <!-- "Steps" section -->
+        <section id="what-you-do" class="steps">
+            <div class="flex-row">
+                <h2 class="section-title secondary-border">
+                    Just Another Section of Filler
+                </h2>
+            </div>
+
+            <div class="step">
+                <h3>Step: 1</h3>
+                <div class="step-info">
+                    <div class="step-img">
+                        <img src="./assets/images/step-1.svg" alt="" />
+                    </div>
+                    <div class="step-text">
+                        <h4>Let Me Know When You Are Sick Of Filler</h4>
+                        <p>Or Reading, more filler...</p>
+                    </div>
+                </div>    
+            </div>
+
+            <div class="step">
+                <h3>Step: 2</h3>
+                <div class="step-info">
+                    <div class="step-img">
+                        <img src="./assets/images/step-2.svg" alt="" />
+                    </div>
+                    <div class="step-text">
+                        <h4>Because I Can Change That</h4>
+                        <p>I just need to know what to put.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step">
+                <h3>Step: 3</h3>
+                <div class="step-info">
+                    <div class="step-img">
+                        <img src="./assets/images/step-3.svg" alt="" />
+                    </div>
+                    <div class="step-text">
+                        <h4>This Entire Section Can Go</h4>
+                        <p>I just had it here as an exmaple of more sectioning</p>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="step">
+                <h3>Step: 4</h3>
+                <div class="step-info">
+                    <div class="step-img">
+                        <img src="./assets/images/step-4.svg" alt="" />
+                    </div>
+                    <div class="step-text">
+                        <h4>See Results.</h4>
+                        <p>This is my first group project in years.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- "A Quick Look" section -->
+        <section id="quick-look" class="look">
+            <h2 class="section-title primary-border">A Quick Look Into Cryptocurrency</h2>
+
+            <!-- Highest Valued Currencies-->
+            <div class="following">
+                <article class="snapshot">
+                    <div class="snapshot-info">
+                        <h3 class="snapshot-name">Highest Valued Currencies</h3>
+                            <ul>
+                            <!-- 'Price' and 'Trend' will have variable links added later -->
+                            <li>
+                                Coin 1 (price) <a href="Link">Link</a>
+                            </li>
+                            <li>
+                                Coin 2 (price) <a href="Link">Link</a>
+                            </li>
+                            <li>
+                                Coin 3 (price) <a href="Link">Link</a>
+                            </li>
+                            <li>
+                                Coin 4 (price) <a href="Link">Link</a>
+                            </li>
+                            <li>
+                                Coin 5 (price) <a href="Link">Link</a>
+                            </li>
+                        </ul>
+                    </div>
+                </article>
+
+                <!-- Fastest Growing Currencies -->
+                <article class="snapshot">
+                    <div class="snapshot-info">
+                        <h3 class="snapshot-name">Fastest Growing Currencies</h3>
+                        <ul>
+                            <li>
+                                Coin 1 (trend) <a href="Link">Link</a>
+                            </li>
+                            <li>
+                                Coin 2 (trend) <a href="Link">Link</a>
+                            </li>
+                            <li>
+                                Coin 3 (trend) <a href="Link">Link</a>
+                            </li>
+                            <li>
+                                Coin 4 (trend) <a href="Link">Link</a>
+                            </li>
+                            <li>
+                                Coin 5 (trend) <a href="Link">Link</a>
+                            </li>
+                        </ul>
+                    </div>
+                </article>
+
+                <!-- trending currencies -->
+                <article class="snapshot">
+                    <div class="snapshot-info">
+                        <h3 class="snapshot-name">Trending Currencies</h3>
+                        <ul>
+                            <li>
+                                Coin 1  <a href="Link">Link</a>
+                            </li>
+                            <li>
+                                Coin 2  <a href="Link">Link</a>
+                            </li>
+                            <li>
+                                Coin 3  <a href="Link">Link</a>
+                            </li>
+                            <li>
+                                Coin 4  <a href="Link">Link</a>
+                            </li>
+                            <li>
+                                Coin 5  <a href="Link">Link</a>
+                            </li>
+                            <li>
+                                Coin 6  <a href="Link">Link</a>
+                            </li>
+                            <li>
+                                Coin 7  <a href="Link">Link</a>
+                            </li>
+                            <li>
+                                Coin 8  <a href="Link">Link</a>
+                            </li>
+                            <li>
+                                Coin 9  <a href="Link">Link</a>
+                            </li>
+                            <li>
+                                Coin 10  <a href="Link">Link</a>
+                            </li>
+                        </ul>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- "reach out" section -->
+        <section id="reach-out" class="contact">
+            <h2 class="section-title secondary-border">Reach Out</h2>
+            <div class="contact-info">
+                <div>
+                    <h3>CryptoCoder42</h3>
+                    <p>
+                        Any questions or concerns?
+                        <br />
+                        Let us know and we'll be happy to talk with you!
+                    </p>
+                    
+                    <address>
+                        55 Main Street <br/>
+                        Some Town, Ca <br/>
+                        12345<br />
+                        P: 555.HAA.COIN (555.422.2646)
+                        E: <a href="mailto:info@cryptocoder42.io">info@cryptocoder42.io</a>
+                    </address>
+                </div>
+
+                <div class="contact-form">
+                    <h3>Contact Us</h3>
+                    <form>
+                        <label for="contact-name">Your Name</label>
+                        <input type="text" id="contact-name" placeholder="Your Name" />
+
+                        <label for="contact-message">Message</label>
+                        <textarea id="contact-message" placeholder="Message"></textarea>
+
+                        <button type="submit">Submit</button>
+                    </form>
+                </div>  
+
+                <div>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3021.867411368571!2d-111.8442907857735!3d40.7649408423141!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x87525feae84df31b%3A0xdd94fcd0de3a096e!2sThe%20University%20of%20Utah!5e0!3m2!1sen!2sus!4v1621853151093!5m2!1sen!2sus" 
+                    width="400" 
+                    height="400" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy">
+                    </iframe>
+                </div> 
+            </div>   
+        </section>
+
+        <!-- footer -->
+        <footer>
+            <h2> Made by CryptoCoder42 </h2>
+            <div>
+                <a href="./privacy-policy.html"> Read Our About Us</a><br />
+                Est. June 2021
+            </div>
+        </footer>
+    </body>
+</html>
+    
+    </body>
 
 </html>
