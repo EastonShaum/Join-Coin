@@ -3,6 +3,8 @@ var searchedEl = document.getElementById("searched");
 
 
 
+
+
 var listOfCoins = function() {
     // List of all coins
     var apiUrl = "https://api.coingecko.com/api/v3/coins/list?include_platform=true";

@@ -1,4 +1,3 @@
-
 * {
     margin: 0;
     padding: 0;
@@ -12,12 +11,14 @@
 }
 
 body {
-/* Main body style start */
+    /* Main body style start */
     color: #a2c987;
     font-family: Helvetica, Arial, sans-serif;
 }
 
+
 /* Header/ Navbar Styles Start */
+
 header {
     padding: 20px 35px;
     background-color: #424540;
@@ -46,7 +47,7 @@ header h1 {
 
 header a {
     text-decoration: none;
-    color:whitesmoke;
+    color: whitesmoke;
 }
 
 header nav {
@@ -55,7 +56,7 @@ header nav {
 
 header nav ul {
     display: flex;
-    flex-wrap: wrap; 
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
     list-style: none;
@@ -66,7 +67,6 @@ header nav ul li a {
     font-weight: lighter;
     font-size: 1.5vw;
     text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-
 }
 
 header nav ul li a:hover {
@@ -75,9 +75,13 @@ header nav ul li a:hover {
     border-radius: 15px;
     text-shadow: none;
 }
+
+
 /* Header/ Navbar Styles End */
 
+
 /* Footer Style Starts */
+
 footer {
     background: #424540;
     width: 100%;
@@ -101,9 +105,13 @@ footer div {
 footer a {
     color: whitesmoke;
 }
+
+
 /*Footer Style Ends */
 
+
 /* Hero Style Start */
+
 section {
     padding: 60px;
 }
@@ -130,7 +138,7 @@ section {
 }
 
 .hero-cta h2 {
-    font-style: italic;    
+    font-style: italic;
     font-size: 55px;
     color: whitesmoke;
     text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
@@ -147,23 +155,26 @@ section {
     border-radius: 15px;
 }
 
-.checkbox-wrapper input, .radio-wrapper input {
+.checkbox-wrapper input,
+.radio-wrapper input {
     opacity: 0;
 }
 
-.checkbox-wrapper label, .radio-wrapper label {
+.checkbox-wrapper label,
+.radio-wrapper label {
     position: relative;
     left: 10px;
     margin: 10px;
     line-height: 1.6;
 }
 
-.checkbox-wrapper label::before, .radio-wrapper label::before {
+.checkbox-wrapper label::before,
+.radio-wrapper label::before {
     content: "";
     height: 20px;
     width: 20px;
-    background: rgba(255, 255, 255, 0.75);  
-    border: 1px solid whitesmoke;  
+    background: rgba(255, 255, 255, 0.75);
+    border: 1px solid whitesmoke;
     position: absolute;
     top: -4px;
     left: -30px;
@@ -184,7 +195,7 @@ section {
     top: -3px;
     background-image: radial-gradient(circle, #a2c987, #424540);
 }
-  
+
 .checkbox-wrapper label::after {
     content: "";
     height: 6px;
@@ -197,18 +208,18 @@ section {
     transform: rotate(-58deg);
 }
 
-.checkbox-wrapper input + label::after, 
-.radio-wrapper input + label::after {
-  content: none;
+.checkbox-wrapper input+label::after,
+.radio-wrapper input+label::after {
+    content: none;
 }
 
-.checkbox-wrapper input:checked + label::after, 
-.radio-wrapper input:checked + label::after {
-  content: "";
+.checkbox-wrapper input:checked+label::after,
+.radio-wrapper input:checked+label::after {
+    content: "";
 }
 
 .hero-form button:hover {
-    background-color: #424540;  
+    background-color: #424540;
 }
 
 .hero-form h3 {
@@ -229,11 +240,11 @@ section {
     width: 100%;
     margin-bottom: 15px;
     border-radius: 10px;
-    background-color: rgba(255,255,255, 0.75);
+    background-color: rgba(255, 255, 255, 0.75);
 }
 
 .form-input:focus {
-    background-color: rgba(255,255,255, 1);
+    background-color: rgba(255, 255, 255, 1);
     outline: none;
 }
 
@@ -249,9 +260,13 @@ section {
     font-size: 16px;
     border-radius: 10px;
 }
+
+
 /* Hero Style Ends*/
 
+
 /* Section Title Styles Start */
+
 .section-title {
     font-size: 48px;
     color: whitesmoke;
@@ -269,12 +284,16 @@ section {
 .secondary-border {
     border-color: #a2c987;
 }
+
+
 /* Section Title Styles End */
+
 
 /* About Us/Crypto Styles Start */
 
-.intro, .look {
-background-color: #696969;
+.intro,
+.look {
+    background-color: #696969;
 }
 
 .intro p {
@@ -285,9 +304,13 @@ background-color: #696969;
     margin: 0 auto;
     text-align: center;
 }
+
+
 /* About Us/Crypto Styles End */
 
+
 /* Step Styles Start */
+
 .steps {
     background: #696969;
 }
@@ -329,7 +352,6 @@ background-color: #696969;
     max-width: 100%;
 }
 
-
 .step-text {
     flex: 12;
 }
@@ -345,9 +367,13 @@ background-color: #696969;
     color: whitesmoke;
     text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
+
+
 /* Steps Styles End */
 
+
 /* A Quick Look Styles Start */
+
 .following {
     width: 100%;
     margin: 0 auto;
@@ -376,9 +402,12 @@ background-color: #696969;
     font-size: 17px;
 }
 
+
 /* Quick Look Styles End */
 
+
 /*REACH OUT STYLES START */
+
 .contact {
     background: #696969;
 }
@@ -393,7 +422,7 @@ background-color: #696969;
     flex-wrap: wrap;
 }
 
-.contact-info > * {
+.contact-info>* {
     flex: 1;
     margin: 15px;
 }
@@ -412,17 +441,19 @@ background-color: #696969;
 }
 
 .contact-info address a {
-  color: #a2c987;
+    color: #a2c987;
 }
 
-.contact-info p, .contact-info address {
+.contact-info p,
+.contact-info address {
     margin: 20px 0;
     line-height: 1.5;
     font-size: 16px;
     font-style: normal;
 }
 
-.contact-form input, .contact-form textarea {
+.contact-form input,
+.contact-form textarea {
     border: 1px solid #424540;
     display: block;
     padding: 7px 15px;
@@ -432,11 +463,12 @@ background-color: #696969;
     margin-bottom: 15px;
     margin-top: 5px;
     border-radius: 10px;
-    background-color: rgba(255,255,255, 0.75)
+    background-color: rgba(255, 255, 255, 0.75)
 }
 
-.contact-form input:focus, .contact-form textarea:focus {
-    background-color: rgba(255,255,255, 1);
+.contact-form input:focus,
+.contact-form textarea:focus {
+    background-color: rgba(255, 255, 255, 1);
     outline: none;
 }
 
@@ -459,9 +491,13 @@ background-color: #696969;
 .contact-info a {
     color: #fce138;
 }
+
+
 /* REACH OUT STYLE END */
 
+
 /* Misc. Utilities */
+
 .text-left {
     text-align: left;
 }
@@ -475,121 +511,112 @@ background-color: #696969;
 }
 
 .flex-row p {
-  padding-bottom: 150px;
+    padding-bottom: 150px;
 }
 
+
 /* For coin display */
+
 .coinList {
     display: inline-block;
     padding-right: 10px;
 }
 
+
 /* MEDIA QUERY FOR SMALLER DESKTOP SCREENS AND SMALLER */
+
 @media screen and (max-width: 980px) {
     header {
-     padding-bottom: 0;
-     justify-content: center;
-     position: relative;
+        padding-bottom: 0;
+        justify-content: center;
+        position: relative;
     }
-  
     header h1 {
         width: 100%;
         text-align: center;
     }
-
     header nav ul {
         margin-top: 20px;
         width: 100%;
         justify-content: center;
     }
-
     header nav lu li a {
         font-size: 20px;
     }
-
-    .hero-cta, .hero-form {
+    .hero-cta,
+    .hero-form {
         width: 100%;
     }
-
     .hero-cta {
         text-align: center;
     }
-
     .section-title {
         width: 80%;
     }
-
     .following {
         display: flex;
         flex-direction: column;
     }
-
     .contact-info iframe {
         flex: 1 100%;
     }
-
-    footer h2, footer div {
+    footer h2,
+    footer div {
         text-align: center;
         width: 100%;
     }
- }
+}
 
-  /* MEDIA QUERY FOR TABLETS AND SMALLER */
-  @media screen and (max-width: 768px) {
+
+/* MEDIA QUERY FOR TABLETS AND SMALLER */
+
+@media screen and (max-width: 768px) {
     section {
         padding: 30px 15px;
     }
-
     .step h3 {
         flex: 1 100%;
         text-align: center;
     }
-
     .step-info {
         flex: 2 100%;
         text-align: center;
         justify-content: center;
     }
-
     .step-img {
         flex: 0 32%;
         margin-right: 0;
         margin-top: 15px;
         margin-bottom: 15px;
     }
-
     .step-text {
         flex: 100%;
     }
- }
-  
-  /* MEDIA QUERY FOR MOBILE PHONES AND SMALLER */
-  @media screen and (max-width: 575px) {
+}
+
+
+/* MEDIA QUERY FOR MOBILE PHONES AND SMALLER */
+
+@media screen and (max-width: 575px) {
     .hero-form button {
         width: 100%;
     }
-
     .section-title {
         width: 95%;
     }
-
     .intro p {
         width: 100%;
     }
-
     .following {
         flex: 0 100%;
     }
-
     .contact-info {
         text-align: center;
     }
-
-    .contact-info > * {
+    .contact-info>* {
         flex: 100%;
     }
-
     .contact-form {
         order: 3;
     }
- }
+}
