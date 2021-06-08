@@ -52,36 +52,13 @@
 
 
         <div class="hero-form">
-            <h3>This Too is Filler</h3>
-            <p>More filler, I just wasn't ready to delete the code.</p>
+            <h3>Search Your Favorite Crypto:</h3>
+            <p>Get the latest news and financial information about your favorite cryptocurrency.</p>
             <!-- Add form element -->
             <form>
-                <label for="name"> Enter full name:</label>
-                <input type="text" placeholder="Your Name" name="name" id="name" class="form-input" />
-                <label for="email"> Enter email address:</label>
-                <input type="email" placeholder="Email Address" name="email" id="email" class="form-input" />
-                <label for="phone"> Enter a telephone number:</label>
-                <input type="tel" placeholder="Phone Number" name="phone" id="phone" class="form-input" />
-                <p>
-                    Have you worked as a Coder before?
-                    <span class="radio-wrapper">
-                        <input type="radio" name="coder-confirm" id="coder-yes" />
-                        <label for="coder-yes">Yes</label>
-                    </span>
-                    <span class="radio-wrapper">
-                        <input type="radio" name="coder-confirm" id="coder-no" />
-                        <label for="coder-no">No</label>
-                    </span>
-                </p>
-                <p>
-                    <span class="checkbox-wrapper">
-                        <input type="checkbox" name="age-confirm" id="checkbox" />
-                        <label for="checkbox">I acknowledge that I am at least 18 years of age.</label>
-                    </span>
-                </p>
-                <button type="submit">
-                    Get Coding!
-                </button>
+                <label for="coinName">Enter Coin Name</label>
+                <input type="text" placeholder="i.e. Bitcoin..." name="coinName" id="coinName" class="form-input" />
+                <button type="submit" id="submit-search">Search Coin</button>
             </form>
         </div>
     </section>
@@ -134,7 +111,7 @@
             <h3>Step: 1</h3>
             <div class="step-info">
                 <div class="step-img">
-                    <img src="./assets/images/step-1.svg" alt="" />
+                    <img src="" alt="" />
                 </div>
                 <div class="step-text">
                     <h4>Let Me Know When You Are Sick Of Filler</h4>
@@ -147,7 +124,7 @@
             <h3>Step: 2</h3>
             <div class="step-info">
                 <div class="step-img">
-                    <img src="./assets/images/step-2.svg" alt="" />
+                    <img src="" alt="" />
                 </div>
                 <div class="step-text">
                     <h4>Because I Can Change That</h4>
@@ -160,7 +137,7 @@
             <h3>Step: 3</h3>
             <div class="step-info">
                 <div class="step-img">
-                    <img src="./assets/images/step-3.svg" alt="" />
+                    <img src="" alt="" />
                 </div>
                 <div class="step-text">
                     <h4>This Entire Section Can Go</h4>
@@ -173,7 +150,7 @@
             <h3>Step: 4</h3>
             <div class="step-info">
                 <div class="step-img">
-                    <img src="./assets/images/step-4.svg" alt="" />
+                    <img src="" alt="" />
                 </div>
                 <div class="step-text">
                     <h4>See Results.</h4>
@@ -216,23 +193,8 @@
             <!-- Fastest Growing Currencies -->
             <article class="snapshot">
                 <div class="snapshot-info">
-                    <h3 class="snapshot-name">Your Searched Currencies</h3>
+                    <h3 class="snapshot-name">Recent Searches</h3>
                     <ul id="searched">
-                        <li>
-                            Coin 1 (trend) <a href="Link">Link</a>
-                        </li>
-                        <li>
-                            Coin 2 (trend) <a href="Link">Link</a>
-                        </li>
-                        <li>
-                            Coin 3 (trend) <a href="Link">Link</a>
-                        </li>
-                        <li>
-                            Coin 4 (trend) <a href="Link">Link</a>
-                        </li>
-                        <li>
-                            Coin 5 (trend) <a href="Link">Link</a>
-                        </li>
                     </ul>
                 </div>
             </article>
@@ -246,6 +208,16 @@
                     </ul>
                 </div>
             </article>
+
+            <!-- Recent News Section -->
+            <article class="snapshot">
+                <div class="snapshot-info">
+                    <h3 class="snapshot-name">Latest Crypto News</h3>
+                    <ul id="news">
+                    </ul>
+                </div>
+            </article>
+
         </div>
     </section>
 

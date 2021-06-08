@@ -258,6 +258,7 @@ section {
     border: none;
     padding: 10px 20px;
     font-size: 16px;
+    font-weight: bold;
     border-radius: 10px;
 }
 
@@ -520,6 +521,47 @@ section {
 .coinList {
     display: inline-block;
     padding-right: 10px;
+}
+
+#searched {
+    list-style: none;
+}
+
+#searched li {
+    line-height: 2.0;
+    padding-top: 5px;
+}
+
+#searched button {
+    color: whitesmoke;
+    background-color: #a2c987;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 10px;
+}
+
+#searched button:hover {
+    background-color: rgba(152, 201, 135, 0.8);
+}
+
+#news {
+    font-family: 'Times New Roman', Times, serif;
+    /* font-weight: bold; */
+    list-style: none;
+}
+
+#news li {
+    line-height: 1.5;
+}
+
+#news a {
+    color: whitesmoke;
+    text-decoration: none;
+}
+
+#news a:hover {
+    color: #a2c987;
 }
 
 

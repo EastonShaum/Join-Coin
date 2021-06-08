@@ -180,65 +180,54 @@ bitcoinPrice();
 
 var coinName = "";
 
-
-
-var coinName = "";
-
-console.log("call getSavedCoins");
-getSavedCoins();
+// console.log("call getSavedCoins");
+// getSavedCoins();
 
 var renderNews = function() {
-    console.log("renderNews start");
+    // var coinNameSearchForm = document.createElement("form");
+    // coinNameSearchForm.setAttribute("id", "input-form");
 
-    console.log("call getSavedCoins");
+    // var inputLabel = document.createElement("label");
+    // inputLabel.setAttribute("for", "coinName-text");
+
+    // var inputText = document.createElement("input");
+    // inputText.setAttribute("id", "coinName-text");
+    // inputText.setAttribute("type", "text");
+    // inputText.setAttribute("name", "coinName-text");
+    // inputText.setAttribute("placeholder", "Enter Coin Name");
+
+    // var inputSubmit = document.createElement("input");
+    // inputSubmit.setAttribute("id", "submit-coinName");
+    // inputSubmit.setAttribute("type", "submit");
+    // inputSubmit.setAttribute("value", "submit");
+
+    // coinNameSearchForm.append(inputLabel, inputText, inputSubmit);
+
+    // var mainFormDiv = document.querySelector("#form-row");
+    // mainFormDiv.append(coinNameSearchForm);
+
     getSavedCoins();
 
-    var coinNameSearchForm = document.createElement("form");
-    coinNameSearchForm.setAttribute("id", "input-form");
-
-    var inputLabel = document.createElement("label");
-    inputLabel.setAttribute("for", "coinName-text");
-
-    var inputText = document.createElement("input");
-    inputText.setAttribute("id", "coinName-text");
-    inputText.setAttribute("type", "text");
-    inputText.setAttribute("name", "coinName-text");
-    inputText.setAttribute("placeholder", "Enter Coin Name");
-
-    var inputSubmit = document.createElement("input");
-    inputSubmit.setAttribute("id", "submit-coinName");
-    inputSubmit.setAttribute("type", "submit");
-    inputSubmit.setAttribute("value", "submit");
-
-    coinNameSearchForm.append(inputLabel, inputText, inputSubmit);
-
-    var mainFormDiv = document.querySelector("#form-row");
-    mainFormDiv.append(coinNameSearchForm);
-
-    var searchCoinName = document.querySelector("#submit-coinName");
+    var searchCoinName = document.querySelector("#submit-search");
     searchCoinName.addEventListener("click", function(event) {
         event.preventDefault();
-        var articles = document.querySelector("#article-row");
-        articles.innerHTML = "";
-        coinName = inputText.value;
-        console.log("send to saveCoinName and fetchNYT");
+        location.href = "#quick-look"
+        var inputText = document.querySelector("#coinName");
+        var coinName = inputText.value;
         saveCoinName(coinName);
         fetchNYT(coinName);
-        console.log("Empty input content");
         inputText.value = "";
     });
 };
 
 
 var saveCoinName = function(coinName) {
-    console.log("start saveCoinName")
     if (tempSearchedCoins) {
         console.log("if portion of tempSearchedCoins expression");
         searchedCoins = tempSearchedCoins;
     } else {
-
         console.log("else portion of tempSearchedCoins expression");
-        searchedCoins.push(keyWord);
+        searchedCoins.push(coinName);
     }
 
     if (searchedCoins.includes(coinName)) {
@@ -266,33 +255,29 @@ var getSavedCoins = function() {
     console.log("tempSearchedCoins:", tempSearchedCoins);
 
     if (tempSearchedCoins) {
-        console.log("if statement to render list of recent searches");
-
         var randomSearch = tempSearchedCoins[Math.floor(Math.random() * tempSearchedCoins.length)];
         console.log("randomSearch output", randomSearch);
         console.log("send to fetchNYT");
         fetchNYT(randomSearch);
 
-        var listCoins = document.getElementById("coins-list");
+        // var listCoins = document.getElementById("coins-list");
 
-        var listContainerEl = document.createElement("div");
-        listContainerEl.setAttribute("id", "list-div");
-        listContainerEl.className = "card";
+        // var listContainerEl = document.createElement("div");
+        // listContainerEl.setAttribute("id", "list-div");
+        // listContainerEl.className = "card";
 
-        var listContainerHeader = document.createElement("div");
-        listContainerHeader.className = "card-header";
-        listContainerHeader.textContent = "Recent Searches:"
+        // var listContainerHeader = document.createElement("div");
+        // listContainerHeader.className = "card-header";
+        // listContainerHeader.textContent = "Recent Searches:"
 
-        var listEl = document.createElement("ul");
-        listEl.setAttribute("id", "list-ul");
-        listEl.className = "list-group list-group-flush";
+        var listEl = document.querySelector("#searched");
+        // listEl.setAttribute("id", "list-ul");
+        // listEl.className = "list-group list-group-flush";    
 
 
         for (var i = 0; i < tempSearchedCoins.length; i++) {
-            console.log("for loop in rendering list");
-
             var listItem = document.createElement("li");
-            listItem.className = "list-group-item";
+            // listItem.className = "list-group-item";
 
             var listButton = document.createElement("button");
             listButton.className = "btn btn-outline-success my-2 my-sm-0";
@@ -302,36 +287,42 @@ var getSavedCoins = function() {
 
             listItem.append(listButton);
             listEl.append(listItem);
-            listContainerEl.append(listContainerHeader, listEl);
-            listCoins.append(listContainerEl);
+            // listContainerEl.append(listContainerHeader, listEl);
+            // listCoins.append(listContainerEl);
 
         }
 
         // var index = tempSearchedCoins.length - 1;
         // coinInfo(tempSearchedCoins[index]);
     } else {
+        var listItem = document.createElement("li");
+        listItem.textContent = "No recently saved searches."
+        console.log("listItem", listItem);
         // display modal alert
-        console.log("else portion to create modal");
-        var modalAlert = document.createElement("div");
-        modalAlert.setAttribute("id", "modal-body");
-        // modalAlert.className = "modal";
+        // var modalAlert = document.createElement("div");
+        // modalAlert.setAttribute("id", "modal-body");
+        // // modalAlert.className = "modal";
 
-        var modalContent = document.createElement("div");
-        modalContent.setAttribute("id", "modal-content");
+        // var modalContent = document.createElement("div");
+        // modalContent.setAttribute("id", "modal-content");
 
-        var modalText = document.createElement("p");
-        modalText.setAttribute("id", "modal-text");
-        modalText.textContent = "No previously searched coins."
+        // var modalText = document.createElement("p");
+        // modalText.setAttribute("id", "modal-text");
+        // modalText.textContent = "No previously searched coins."
 
-        modalContent.append(modalText);
-        modalAlert.append(modalContent);
+        // modalContent.append(modalText);
+        // modalAlert.append(modalContent);
 
-        var modalDiv = document.getElementById("coins-list");
-        modalDiv.append(modalAlert);
+        // var modalDiv = document.getElementById("coins-list");
+        // modalDiv.append(modalAlert);
 
-        var listCoins = document.getElementById("coins-list");
-        console.log("listCoins", listCoins);
-        listCoins.append(modalAlert);
+        // var listCoins = document.getElementById("coins-list");
+        // console.log("listCoins", listCoins);
+        // listCoins.append(modalAlert);
+
+        var listEl = document.getElementById("searched");
+        listEl.appendChild(listItem);
+        console.log("listEl", listEl);
 
         return;
     }
@@ -379,13 +370,11 @@ var getSavedCoins = function() {
 
 
 var displayNytArticles = function(article) {
-    console.log("displayArticles");
-
-    var articles = document.querySelector("#article-row");
-    articles.className = "col-6 bg-ligh text-dark align-right";
+    var articles = document.querySelector("#news");
+    // articles.className = "col-6 bg-ligh text-dark align-right";
 
     for (var i = 0; i < 5; i++) {
-        var articleLink = document.createElement("h6");
+        var articleLink = document.createElement("li");
         var articleHeadline = document.createElement("a");
         if (article.response.docs[i].headline.print_headline) {
             articleHeadline.setAttribute("href", article.response.docs[i].web_url);
@@ -403,8 +392,6 @@ var displayNytArticles = function(article) {
 };
 
 var fetchNYT = function(coinName) {
-    console.log("fetchNYT");
-
     var nytApiKey = "LCyA6VYEUWEMBexw7HmmAlPdPJopvG9G";
     var apiUrl = "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=" + coinName + "&api-key=" + nytApiKey;
 
