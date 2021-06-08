@@ -1,7 +1,8 @@
 var trendingEl = document.getElementById("trending");
 var searchedEl = document.getElementById("searched");
 
-
+var searchedCoins = [];
+var tempSearchedCoins = [];
 
 
 
@@ -118,6 +119,8 @@ var displayChoosenData = function(name, price = 0, marketCap = 0, volume = 0, lo
 
     if (price > 0.001) {
         price = price.toFixed(2);
+    } else  {
+        price = price.toFixed(8);
     }
 
     // assign the values
