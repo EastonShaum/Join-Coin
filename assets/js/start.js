@@ -3,6 +3,8 @@ var searchedEl = document.getElementById("searched");
 
 var searchedCoins = [];
 var tempSearchedCoins = [];
+var nytApiKey = "LCyA6VYEUWEMBexw7HmmAlPdPJopvG9G";
+var keyWord = "";
 
 
 
@@ -220,72 +222,46 @@ bitcoinPrice();
 
 
 
-var nytApiKey = "LCyA6VYEUWEMBexw7HmmAlPdPJopvG9G";
-var keyWord = "";
 
-// console.log("call getSavedCoins");
-// getSavedCoins();
+
+
 
 var renderNews = function() {
-    // var coinNameSearchForm = document.createElement("form");
-    // coinNameSearchForm.setAttribute("id", "input-form");
-
-    // var inputLabel = document.createElement("label");
-    // inputLabel.setAttribute("for", "coinName-text");
-
-    // var inputText = document.createElement("input");
-    // inputText.setAttribute("id", "coinName-text");
-    // inputText.setAttribute("type", "text");
-    // inputText.setAttribute("name", "coinName-text");
-    // inputText.setAttribute("placeholder", "Enter Coin Name");
-
-    // var inputSubmit = document.createElement("input");
-    // inputSubmit.setAttribute("id", "submit-coinName");
-    // inputSubmit.setAttribute("type", "submit");
-    // inputSubmit.setAttribute("value", "submit");
-
-    // coinNameSearchForm.append(inputLabel, inputText, inputSubmit);
-
-    // var mainFormDiv = document.querySelector("#form-row");
-    // mainFormDiv.append(coinNameSearchForm);
-
     getSavedCoins();
 
     var searchCoinName = document.querySelector("#submit-search");
     searchCoinName.addEventListener("click", function(event) {
         event.preventDefault();
+
         location.href = "#quick-look"
+
         var inputText = document.querySelector("#coinName");
         var coinName = inputText.value;
+
         saveCoinName(coinName);
         fetchNYT(coinName);
+        coinInfo(coinName);
+
         inputText.value = "";
     });
 };
 
 
 var saveCoinName = function(coinName) {
-    if (tempSearchedCoins) {
-        console.log("if portion of tempSearchedCoins expression");
-        searchedCoins = tempSearchedCoins;
+    searchedCoins = tempSearchedCoins;
+    if (searchedCoins.length >= 1) {
+        if (searchedCoins.includes(coinName)) {
+            return;
+        } else {
+            console.log("add element to array");
+            searchedCoins.push(coinName);
+        }
+        if (searchedCoins.length > 5) {
+            searchedCoins.shift();
+        }
     } else {
-        console.log("else portion of tempSearchedCoins expression");
         searchedCoins.push(coinName);
     }
-
-    if (searchedCoins.includes(coinName)) {
-        console.log("Search already an array element.");
-        return;
-    } else {
-        console.log("add element to array");
-        searchedCoins.push(coinName);
-    }
-
-    if (searchedCoins.length > 5) {
-        searchedCoins.shift();
-    }
-
-
 
     console.log("add to localStorage");
     localStorage.setItem("searchedCoins", JSON.stringify(searchedCoins));
@@ -299,28 +275,12 @@ var getSavedCoins = function() {
 
     if (tempSearchedCoins) {
         var randomSearch = tempSearchedCoins[Math.floor(Math.random() * tempSearchedCoins.length)];
-        console.log("randomSearch output", randomSearch);
-        console.log("send to fetchNYT");
         fetchNYT(randomSearch);
 
-        // var listCoins = document.getElementById("coins-list");
-
-        // var listContainerEl = document.createElement("div");
-        // listContainerEl.setAttribute("id", "list-div");
-        // listContainerEl.className = "card";
-
-        // var listContainerHeader = document.createElement("div");
-        // listContainerHeader.className = "card-header";
-        // listContainerHeader.textContent = "Recent Searches:"
-
         var listEl = document.querySelector("#recent-searches");
-        // listEl.setAttribute("id", "list-ul");
-        // listEl.className = "list-group list-group-flush";    
-
 
         for (var i = 0; i < tempSearchedCoins.length; i++) {
             var listItem = document.createElement("li");
-            // listItem.className = "list-group-item";
 
             var listButton = document.createElement("button");
             listButton.className = "btn btn-outline-success my-2 my-sm-0";
@@ -330,38 +290,14 @@ var getSavedCoins = function() {
 
             listItem.append(listButton);
             listEl.append(listItem);
-            // listContainerEl.append(listContainerHeader, listEl);
-            // listCoins.append(listContainerEl);
-
         }
 
-        // var index = tempSearchedCoins.length - 1;
-        // coinInfo(tempSearchedCoins[index]);
+        var index = tempSearchedCoins.length - 1;
+        coinInfo(tempSearchedCoins[index]);
     } else {
         var listItem = document.createElement("li");
         listItem.textContent = "No recently saved searches."
         console.log("listItem", listItem);
-        // display modal alert
-        // var modalAlert = document.createElement("div");
-        // modalAlert.setAttribute("id", "modal-body");
-        // // modalAlert.className = "modal";
-
-        // var modalContent = document.createElement("div");
-        // modalContent.setAttribute("id", "modal-content");
-
-        // var modalText = document.createElement("p");
-        // modalText.setAttribute("id", "modal-text");
-        // modalText.textContent = "No previously searched coins."
-
-        // modalContent.append(modalText);
-        // modalAlert.append(modalContent);
-
-        // var modalDiv = document.getElementById("coins-list");
-        // modalDiv.append(modalAlert);
-
-        // var listCoins = document.getElementById("coins-list");
-        // console.log("listCoins", listCoins);
-        // listCoins.append(modalAlert);
 
         var listEl = document.getElementById("recent-searches");
         listEl.appendChild(listItem);
@@ -370,8 +306,6 @@ var getSavedCoins = function() {
         return;
     }
 
-
-    console.log("start portion creating event listeners for list of recent searches");
     var coin1 = document.getElementById("coin-0");
     var coin2 = document.getElementById("coin-1");
     var coin3 = document.getElementById("coin-2");
@@ -414,7 +348,7 @@ var getSavedCoins = function() {
 
 var displayNytArticles = function(article) {
     var articles = document.querySelector("#news");
-    // articles.className = "col-6 bg-ligh text-dark align-right";
+
 
     for (var i = 0; i < 5; i++) {
         var articleLink = document.createElement("li");
@@ -438,14 +372,9 @@ var fetchNYT = function(coinName) {
     var nytApiKey = "LCyA6VYEUWEMBexw7HmmAlPdPJopvG9G";
     var apiUrl = "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=" + keyWord + "&api-key=" + nytApiKey;
 
-    console.log("keyword in fetchNYT function: ", keyWord);
-    console.log("apiUrl search value: ", apiUrl);
     fetch(apiUrl).then(function(response) {
-        console.log(response);
-
         return response.json();
     }).then(function(article) {
-        console.log(article);
         var articles = document.querySelector("#news");
         articles.className = "col-6 bg-ligh text-dark align-right";
         for (var i = 0; i < 5; i++) {
