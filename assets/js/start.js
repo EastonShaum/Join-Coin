@@ -84,7 +84,7 @@ var bitcoinPrice = function() {
 
 var coinInfo = function(coinName) {
     // Info on a specific coin and date
-    var apiUrl = "https://api.coingecko.com/api/v3/coins/" + coinName 
+    var apiUrl = "https://api.coingecko.com/api/v3/coins/" + coinName
 
     fetch(apiUrl).then(function(response) {
         // request was successful
@@ -142,7 +142,7 @@ var displayChoosenData = function(name, price = 0, marketCap = 0, volume = 0, lo
     logoEl.classList = ("coinList");
     marketCapEl.classList = ("coinList");
     volumeEl.classList = ("coinList");
-    
+
     logoEl.height = 50;
 
     // make them the right sizes
@@ -155,7 +155,7 @@ var displayChoosenData = function(name, price = 0, marketCap = 0, volume = 0, lo
     infoEl.appendChild(priceEl);
     infoEl.appendChild(marketCapEl);
     infoEl.appendChild(volumeEl);
-    
+
 
 
 
@@ -175,13 +175,13 @@ var displayTrendingData = function(name, price = 0, logo = 0) {
     if (price > 0.001) {
         price = price.toFixed(2);
         price = numberWithCommas(price);
-    }   else  {
+    } else {
         price = price.toFixed(8);
     }
 
-    
-    
-    
+
+
+
 
     // assign the values
     nameEl.textContent = name;
@@ -216,6 +216,7 @@ coinInfo("bitcoin")
 
 bitcoinPrice();
 //trendingCoins();
+
 
 
 
