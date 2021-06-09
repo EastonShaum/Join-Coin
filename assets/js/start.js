@@ -110,6 +110,7 @@ var coinInfo = function(coinName) {
 };
 
 var displayChoosenData = function(name, price = 0, marketCap = 0, volume = 0, logo = 0) {
+    resetSearchedCoins();
     // create elements for the variables
     var infoEl = document.createElement("li");
     var nameEl = document.createElement("p");
@@ -219,6 +220,11 @@ coinInfo("bitcoin")
 bitcoinPrice();
 //trendingCoins();
 
+var resetSearchedCoins = function() {
+    var searchedListEl = document.getElementById("searched");
+    searchedListEl.innerHTML = "";
+};
+
 
 
 
@@ -227,83 +233,76 @@ bitcoinPrice();
 
 
 var renderNews = function() {
-    getSavedCoins();
 
+    console.log("start renderNews");
     var searchCoinName = document.querySelector("#submit-search");
     searchCoinName.addEventListener("click", function(event) {
         event.preventDefault();
-
         location.href = "#quick-look"
 
         var inputText = document.querySelector("#coinName");
         var coinName = inputText.value;
 
         saveCoinName(coinName);
+        resetArticles();
         fetchNYT(coinName);
         coinInfo(coinName);
 
         inputText.value = "";
     });
+    getSavedCoins();
 };
 
 
 var saveCoinName = function(coinName) {
-    searchedCoins = tempSearchedCoins;
-    if (searchedCoins.length >= 1) {
-        if (searchedCoins.includes(coinName)) {
-            return;
-        } else {
-            console.log("add element to array");
+    getSavedCoins();
+    var tempSearchedCoins = [];
+    tempSearchedCoins.push(coinName);
+
+    if (searchedCoins != null) {
+        if (searchedCoins.includes(coinName)) {} else {
             searchedCoins.push(coinName);
         }
         if (searchedCoins.length > 5) {
             searchedCoins.shift();
         }
-    } else {
-        searchedCoins.push(coinName);
-    }
 
-    console.log("add to localStorage");
-    localStorage.setItem("searchedCoins", JSON.stringify(searchedCoins));
+        localStorage.setItem("searchedCoins", JSON.stringify(searchedCoins));
+    } else {
+        localStorage.setItem("searchedCoins", JSON.stringify(tempSearchedCoins));
+    }
 };
 
-var getSavedCoins = function() {
-    console.log("start getSavedCoins");
-    var tempSearchedCoins = JSON.parse(localStorage.getItem("searchedCoins"));
+var getSavedCoins = function(coinName) {
+    searchedCoins = JSON.parse(localStorage.getItem("searchedCoins"));
 
-    console.log("tempSearchedCoins:", tempSearchedCoins);
+    var lastSearch = searchedCoins[searchedCoins.length - 1];
+    fetchNYT(lastSearch);
 
-    if (tempSearchedCoins) {
-        var randomSearch = tempSearchedCoins[Math.floor(Math.random() * tempSearchedCoins.length)];
-        fetchNYT(randomSearch);
-
+    if (searchedCoins) {
         var listEl = document.querySelector("#recent-searches");
 
-        for (var i = 0; i < tempSearchedCoins.length; i++) {
+        for (var i = 0; i < searchedCoins.length; i++) {
             var listItem = document.createElement("li");
 
             var listButton = document.createElement("button");
             listButton.className = "btn btn-outline-success my-2 my-sm-0";
             listButton.setAttribute("type", "submit");
             listButton.setAttribute("id", "coin-" + [i]);
-            listButton.textContent = tempSearchedCoins[i];
+            listButton.textContent = searchedCoins[i];
 
             listItem.append(listButton);
             listEl.append(listItem);
         }
 
-        var index = tempSearchedCoins.length - 1;
-        coinInfo(tempSearchedCoins[index]);
+        var index = searchedCoins.length - 1;
+        coinInfo(searchedCoins[index]);
     } else {
         var listItem = document.createElement("li");
         listItem.textContent = "No recently saved searches."
-        console.log("listItem", listItem);
 
         var listEl = document.getElementById("recent-searches");
         listEl.appendChild(listItem);
-        console.log("listEl", listEl);
-
-        return;
     }
 
     var coin1 = document.getElementById("coin-0");
@@ -314,44 +313,61 @@ var getSavedCoins = function() {
 
     if (coin1) {
         coin1.addEventListener("click", function(event) {
-            event.preventDefault();
+            // event.preventDefault();
+            console.log("coin1.textContent", coin1.textContent);
+            fetchNYT(coin1.textContent);
             coinInfo(coin1.textContent);
         });
     }
     if (coin2) {
         coin2.addEventListener("click", function(event) {
-            event.preventDefault();
+            // event.preventDefault();
+            console.log("coin2.textContent", coin2.textContent);
+            fetchNYT(coin2.textContent);
             coinInfo(coin2.textContent);
         });
     }
     if (coin3) {
         coin3.addEventListener("click", function(event) {
-            event.preventDefault();
+            // event.preventDefault();
+            console.log("coin3.textContent", coin3.textContent);
+            fetchNYT(coin3.textContent);
             coinInfo(coin3.textContent);
         });
     }
     if (coin4) {
         coin4.addEventListener("click", function(event) {
-            event.preventDefault();
+            // event.preventDefault();
+            fetchNYT(coin4.textContent);
             coinInfo(coin4.textContent);
         });
     }
     if (coin5) {
         coin5.addEventListener("click", function(event) {
-            event.preventDefault();
-            coinInfo(coin5textContent);
+            // event.preventDefault();
+            fetchNYT(coin5.textContent);
+            coinInfo(coin5.textContent);
         });
     }
-
+    console.log("end getSavedCoins", searchedCoins);
+    return searchedCoins;
 };
 
+var resetArticles = function() {
+    var articles = document.querySelector("#news");
+    articles.innerHTML = "";
+}
 
 var displayNytArticles = function(article) {
-    var articles = document.querySelector("#news");
+    console.log("start displayNytArticles");
 
+    resetArticles();
+
+    var articles = document.querySelector("#news");
 
     for (var i = 0; i < 5; i++) {
         var articleLink = document.createElement("li");
+        articleLink.setAttribute("id", "article-list-item-" + [i]);
         var articleHeadline = document.createElement("a");
         if (article.response.docs[i].headline.print_headline) {
             articleHeadline.setAttribute("href", article.response.docs[i].web_url);
@@ -369,30 +385,16 @@ var displayNytArticles = function(article) {
 };
 
 var fetchNYT = function(coinName) {
+    console.log("fetchNYT start");
     var nytApiKey = "LCyA6VYEUWEMBexw7HmmAlPdPJopvG9G";
-    var apiUrl = "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=" + keyWord + "&api-key=" + nytApiKey;
+    var apiUrl = "https://api.nytimes.com/svc/search/v2/articlesearch.json?fq=financial&q=" + coinName + "&api-key=" + nytApiKey;
+    console.log("apiUrl", apiUrl);
 
     fetch(apiUrl).then(function(response) {
+        console.log("response", response);
         return response.json();
     }).then(function(article) {
-        var articles = document.querySelector("#news");
-        articles.className = "col-6 bg-ligh text-dark align-right";
-        for (var i = 0; i < 5; i++) {
-            var articleLink = document.createElement("h6");
-            var articleHeadline = document.createElement("a");
-            if (article.response.docs[i].headline.print_headline) {
-                articleHeadline.setAttribute("href", article.response.docs[i].web_url);
-                articleHeadline.textContent = article.response.docs[i].headline.print_headline;
-            } else if (article.response.docs[i].snippet) {
-                articleHeadline.setAttribute("href", article.response.docs[i].web_url);
-                articleHeadline.textContent = article.response.docs[i].snippet;
-            } else {
-                return;
-            }
-
-            articleLink.append(articleHeadline);
-            articles.append(articleLink);
-        }
+        displayNytArticles(article);
     })
 };
 

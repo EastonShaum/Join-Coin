@@ -547,15 +547,11 @@ section {
 
 #news {
     font-family: 'Times New Roman', Times, serif;
-    /* font-weight: bold; */
     list-style: none;
-    /* overflow: hidden;
-    white-space: pre-wrap; */
 }
 
 #news li {
-    line-height: 2.0;
-    /* text-overflow: clip; */
+    line-height: 1.5;
 }
 
 #news a {
