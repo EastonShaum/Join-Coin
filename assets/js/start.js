@@ -134,7 +134,7 @@ var displayChoosenData = function(name, price = 0, marketCap = 0, volume = 0, lo
     priceEl.textContent = price;
     marketCapEl.textContent = marketCap;
     volumeEl.textContent = volume;
-    logoEl.value = logo;
+    logoEl.src = logo;
 
     // assign classes
     nameEl.classList = ("coinList");
