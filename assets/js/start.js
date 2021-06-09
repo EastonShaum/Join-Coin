@@ -231,10 +231,8 @@ var resetSearchedCoins = function() {
 
 
 
-
+// Start of script, initial event listener on search button
 var renderNews = function() {
-
-    console.log("start renderNews");
     var searchCoinName = document.querySelector("#submit-search");
     searchCoinName.addEventListener("click", function(event) {
         event.preventDefault();
@@ -253,7 +251,7 @@ var renderNews = function() {
     getSavedCoins();
 };
 
-
+// save unique searches, up to 5 total, to localStorage
 var saveCoinName = function(coinName) {
     getSavedCoins();
     var tempSearchedCoins = [];
@@ -273,12 +271,14 @@ var saveCoinName = function(coinName) {
     }
 };
 
+// retrieve saved searches, if any 
 var getSavedCoins = function(coinName) {
     searchedCoins = JSON.parse(localStorage.getItem("searchedCoins"));
 
     var lastSearch = searchedCoins[searchedCoins.length - 1];
     fetchNYT(lastSearch);
 
+    // render the list of previous searches as button
     if (searchedCoins) {
         var listEl = document.querySelector("#recent-searches");
 
@@ -311,56 +311,48 @@ var getSavedCoins = function(coinName) {
     var coin4 = document.getElementById("coin-3");
     var coin5 = document.getElementById("coin-4");
 
+    // Set button event listeners, refresh all page info with the coin info for the past search selected
     if (coin1) {
         coin1.addEventListener("click", function(event) {
-            // event.preventDefault();
-            console.log("coin1.textContent", coin1.textContent);
             fetchNYT(coin1.textContent);
             coinInfo(coin1.textContent);
         });
     }
     if (coin2) {
         coin2.addEventListener("click", function(event) {
-            // event.preventDefault();
-            console.log("coin2.textContent", coin2.textContent);
             fetchNYT(coin2.textContent);
             coinInfo(coin2.textContent);
         });
     }
     if (coin3) {
         coin3.addEventListener("click", function(event) {
-            // event.preventDefault();
-            console.log("coin3.textContent", coin3.textContent);
             fetchNYT(coin3.textContent);
             coinInfo(coin3.textContent);
         });
     }
     if (coin4) {
         coin4.addEventListener("click", function(event) {
-            // event.preventDefault();
             fetchNYT(coin4.textContent);
             coinInfo(coin4.textContent);
         });
     }
     if (coin5) {
         coin5.addEventListener("click", function(event) {
-            // event.preventDefault();
             fetchNYT(coin5.textContent);
             coinInfo(coin5.textContent);
         });
     }
-    console.log("end getSavedCoins", searchedCoins);
     return searchedCoins;
 };
 
+// Clear articles before rendering more articles
 var resetArticles = function() {
     var articles = document.querySelector("#news");
     articles.innerHTML = "";
 }
 
+// Render list and anchor elements to news articles
 var displayNytArticles = function(article) {
-    console.log("start displayNytArticles");
-
     resetArticles();
 
     var articles = document.querySelector("#news");
@@ -384,11 +376,11 @@ var displayNytArticles = function(article) {
     }
 };
 
+// Fetch cryptocurrency related news articles
 var fetchNYT = function(coinName) {
     console.log("fetchNYT start");
     var nytApiKey = "LCyA6VYEUWEMBexw7HmmAlPdPJopvG9G";
     var apiUrl = "https://api.nytimes.com/svc/search/v2/articlesearch.json?fq=financial&q=" + coinName + "&api-key=" + nytApiKey;
-    console.log("apiUrl", apiUrl);
 
     fetch(apiUrl).then(function(response) {
         console.log("response", response);
@@ -398,4 +390,5 @@ var fetchNYT = function(coinName) {
     })
 };
 
+// start news portion of the script
 renderNews();
