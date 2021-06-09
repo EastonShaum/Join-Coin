@@ -220,8 +220,6 @@ bitcoinPrice();
 
 
 
-
-
 var nytApiKey = "LCyA6VYEUWEMBexw7HmmAlPdPJopvG9G";
 var keyWord = "";
 
@@ -315,7 +313,7 @@ var getSavedCoins = function() {
         // listContainerHeader.className = "card-header";
         // listContainerHeader.textContent = "Recent Searches:"
 
-        var listEl = document.querySelector("#searched");
+        var listEl = document.querySelector("#recent-searches");
         // listEl.setAttribute("id", "list-ul");
         // listEl.className = "list-group list-group-flush";    
 
@@ -365,7 +363,7 @@ var getSavedCoins = function() {
         // console.log("listCoins", listCoins);
         // listCoins.append(modalAlert);
 
-        var listEl = document.getElementById("searched");
+        var listEl = document.getElementById("recent-searches");
         listEl.appendChild(listItem);
         console.log("listEl", listEl);
 
@@ -448,7 +446,7 @@ var fetchNYT = function(coinName) {
         return response.json();
     }).then(function(article) {
         console.log(article);
-        var articles = document.querySelector("#article-row");
+        var articles = document.querySelector("#news");
         articles.className = "col-6 bg-ligh text-dark align-right";
         for (var i = 0; i < 5; i++) {
             var articleLink = document.createElement("h6");
