@@ -273,6 +273,8 @@ var saveCoinName = function(coinName) {
 
 // retrieve saved searches, if any 
 var getSavedCoins = function(coinName) {
+    resetSearchedBtns();
+
     searchedCoins = JSON.parse(localStorage.getItem("searchedCoins"));
 
     var lastSearch = searchedCoins[searchedCoins.length - 1];
@@ -345,6 +347,11 @@ var getSavedCoins = function(coinName) {
     return searchedCoins;
 };
 
+var resetSearchedBtns = function() {
+    var listEl = document.querySelector("#recent-searches");
+    listEl.innerHTML = "";
+};
+
 // Clear articles before rendering more articles
 var resetArticles = function() {
     var articles = document.querySelector("#news");
@@ -378,12 +385,10 @@ var displayNytArticles = function(article) {
 
 // Fetch cryptocurrency related news articles
 var fetchNYT = function(coinName) {
-    console.log("fetchNYT start");
     var nytApiKey = "LCyA6VYEUWEMBexw7HmmAlPdPJopvG9G";
     var apiUrl = "https://api.nytimes.com/svc/search/v2/articlesearch.json?fq=financial&q=" + coinName + "&api-key=" + nytApiKey;
 
     fetch(apiUrl).then(function(response) {
-        console.log("response", response);
         return response.json();
     }).then(function(article) {
         displayNytArticles(article);
