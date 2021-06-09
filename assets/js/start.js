@@ -129,19 +129,28 @@ var displayChoosenData = function(name, price = 0, marketCap = 0, volume = 0, lo
     marketCap = numberWithCommas(marketCap);
     volume = numberWithCommas(volume);
 
+    //change the values to strings
+    price = price.toString();
+    marketCap = marketCap.toString();
+    volume = volume.toString();
+
+    //add dollar signs
+    price = "$" + price
+    volume = "$" + volume
+
     // assign the values
     nameEl.textContent = name;
     priceEl.textContent = price;
     marketCapEl.textContent = marketCap;
     volumeEl.textContent = volume;
-    logoEl.value = logo;
+    logoEl.src = logo;
 
     // assign classes
-    nameEl.classList = ("coinList");
-    priceEl.classList = ("coinList");
-    logoEl.classList = ("coinList");
-    marketCapEl.classList = ("coinList");
-    volumeEl.classList = ("coinList");
+    nameEl.classList = ("coinList, col-2");
+    priceEl.classList = ("coinList, col-2");
+    logoEl.classList = ("coinList, col-1");
+    marketCapEl.classList = ("coinList, col-2");
+    volumeEl.classList = ("coinList, col-2");
     
     logoEl.height = 50;
 
@@ -340,8 +349,8 @@ var getSavedCoins = function() {
         // coinInfo(tempSearchedCoins[index]);
     } else {
         var listItem = document.createElement("li");
-        listItem.textContent = "No recently saved searches."
-        console.log("listItem", listItem);
+                // listItem.textContent = "No recently saved searches."
+                // console.log("listItem", listItem);
         // display modal alert
         // var modalAlert = document.createElement("div");
         // modalAlert.setAttribute("id", "modal-body");
