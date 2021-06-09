@@ -272,13 +272,15 @@ var saveCoinName = function(coinName) {
 };
 
 // retrieve saved searches, if any 
-var getSavedCoins = function(coinName) {
+var getSavedCoins = function() {
     resetSearchedBtns();
 
     searchedCoins = JSON.parse(localStorage.getItem("searchedCoins"));
 
-    var lastSearch = searchedCoins[searchedCoins.length - 1];
-    fetchNYT(lastSearch);
+    if (searchedCoins) {
+        var lastSearch = searchedCoins[searchedCoins.length - 1];
+        fetchNYT(lastSearch);
+    }
 
     // render the list of previous searches as button
     if (searchedCoins) {
