@@ -518,12 +518,18 @@ section {
 
 /* For coin display */
 
+
 .coinList {
     display: inline-block;
     padding-right: 10px;
 }
 
 #searched {
+    list-style: none;
+    column-count: 5;
+}
+
+#trending {
     list-style: none;
 }
 

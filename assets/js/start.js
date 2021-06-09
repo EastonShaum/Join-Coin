@@ -84,6 +84,8 @@ var bitcoinPrice = function() {
 
 var coinInfo = function(coinName) {
     // Info on a specific coin and date
+
+    coinName = coinName.toLowerCase()
     var apiUrl = "https://api.coingecko.com/api/v3/coins/" + coinName 
 
     fetch(apiUrl).then(function(response) {
@@ -136,6 +138,7 @@ var displayChoosenData = function(name, price = 0, marketCap = 0, volume = 0, lo
 
     //add dollar signs
     price = "$" + price
+    marketCap = "$" + marketCap
     volume = "$" + volume
 
     // assign the values
@@ -148,16 +151,13 @@ var displayChoosenData = function(name, price = 0, marketCap = 0, volume = 0, lo
     // assign classes
     nameEl.classList = ("coinList, col-2");
     priceEl.classList = ("coinList, col-2");
-    logoEl.classList = ("coinList, col-1");
+    logoEl.classList = ("coinList, col-2");
     marketCapEl.classList = ("coinList, col-2");
-    volumeEl.classList = ("coinList, col-2");
+    volumeEl.classList = ("coinList, col-4");
     
     logoEl.height = 50;
 
-    // make them the right sizes
-    // nameEl.classList("col-5");
-    // priceEl.classList("col-5");
-    // logoEl.classList("col-2");
+    
 
     infoEl.appendChild(logoEl);
     infoEl.appendChild(nameEl);
@@ -221,7 +221,7 @@ var numberWithCommas = function(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
-coinInfo("bitcoin")
+coinInfo("Litecoin");
 
 bitcoinPrice();
 //trendingCoins();
