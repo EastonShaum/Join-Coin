@@ -17,9 +17,6 @@ body {
   background-color: #696969;
 }
 
-
-/* Header/ Navbar Styles Start */
-
 header {
   padding: 20px 35px;
   background-color: #424540;
@@ -38,7 +35,7 @@ header {
 
 header h1 {
   background-color: #a2c987;
-  padding: 10px 30px 10px 30px;
+  padding: 12px 30px 10px 30px;
   font-weight: bold;
   margin: 0;
   font-size: 36px;
@@ -68,11 +65,29 @@ header nav {
 
 main {
   background-color: #696969;
-  margin: 5px;
+  margin: 15px;
   padding: 10px;
   color: whitesmoke;
 }
 
 li {
   list-style: none;
+}
+
+.title {
+  font-size: 60px;
+  color: whitesmoke;
+  border-bottom: 6px solid #a2c987;
+  padding-bottom: 20px;
+  text-align: center;
+  margin: 35px auto 35px auto;
+  width: 50%;
+}
+main p {
+  margin: 15px auto 15px auto;
+  padding: 10px;
+  text-align: center;
+  font-size: 20px;
+  line-height: 50px;
+  width: 80%;
 }
