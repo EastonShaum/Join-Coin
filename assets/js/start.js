@@ -1,5 +1,6 @@
 var trendingEl = document.getElementById("trending");
 var searchedEl = document.getElementById("searched");
+var descriptionEl = document.getElementById("description");
 
 var searchedCoins = [];
 var tempSearchedCoins = [];
@@ -45,7 +46,7 @@ var trendingCoins = function(bitcoinPrice) {
 
 
 
-                    console.log(bitcoinPrice);
+                    //console.log(bitcoinPrice);
 
 
                     coinPrice = coinPrice * bitcoinPrice;
@@ -98,10 +99,11 @@ var coinInfo = function(coinName) {
                 var coinPrice = data.market_data.current_price.usd
                 var coinMarketCap = data.market_data.market_cap.usd
                 var coinVolume = data.market_data.total_volume.usd
-                var pngLogo = data.image.small
+                var pngLogo = data.image.thumb
+                var desc = data.description.en
+                
 
-
-                displayChoosenData(coinName, coinPrice, coinMarketCap, coinVolume, pngLogo);
+                displayChoosenData(coinName, coinPrice, coinMarketCap, coinVolume, pngLogo, desc);
 
 
             });
@@ -109,15 +111,23 @@ var coinInfo = function(coinName) {
     });
 };
 
-var displayChoosenData = function(name, price = 0, marketCap = 0, volume = 0, logo = 0) {
+var displayChoosenData = function(name, price = 0, marketCap = 0, volume = 0, logo = 0, description) {
     // create elements for the variables
-    var infoEl = document.createElement("li");
+    //var infoEl = document.createElement("li");
     var nameEl = document.createElement("p");
     var priceEl = document.createElement("p");
     var marketCapEl = document.createElement("p");
     var volumeEl = document.createElement("p");
     var logoEl = document.createElement("img");
 
+    var descEl = document.createElement("div");
+
+    //var infoElLi = document.createElement("li");
+    var nameElLi = document.createElement("p");
+    var priceElLi = document.createElement("p");
+    var marketCapElLi = document.createElement("p");
+    var volumeElLi = document.createElement("p");
+    var logoElLi = document.createElement("img");
     if (price > 0.001) {
         price = price.toFixed(2);
     } else {
@@ -130,46 +140,46 @@ var displayChoosenData = function(name, price = 0, marketCap = 0, volume = 0, lo
     price = numberWithCommas(price);
     marketCap = numberWithCommas(marketCap);
     volume = numberWithCommas(volume);
-
     //change the values to strings
     price = price.toString();
     marketCap = marketCap.toString();
     volume = volume.toString();
+    description = description.toString();
+
+    description = insertTemplateLiteral(description);
 
     //add dollar signs
     price = "$" + price
     marketCap = "$" + marketCap
     volume = "$" + volume
-
     // assign the values
     nameEl.textContent = name;
     priceEl.textContent = price;
     marketCapEl.textContent = marketCap;
     volumeEl.textContent = volume;
     logoEl.src = logo;
-
+    descEl.textContent = description;
     // assign classes
-    nameEl.classList = ("coinList, col-2");
-    priceEl.classList = ("coinList, col-2");
-    logoEl.classList = ("coinList, col-2");
-    marketCapEl.classList = ("coinList, col-2");
-    volumeEl.classList = ("coinList, col-4");
+    nameElLi.classList = ("coinList, col-2");
+    priceElLi.classList = ("coinList, col-2");
+    logoElLi.classList = ("coinList, col-2");
+    marketCapElLi.classList = ("coinList, col-3");
+    volumeElLi.classList = ("coinList, col-3");
     
     logoEl.height = 50;
 
-    
+    logoElLi.appendChild(logoEl);
+    nameElLi.appendChild(nameEl);
+    priceElLi.appendChild(priceEl);
+    marketCapElLi.appendChild(marketCapEl);
+    volumeElLi.appendChild(volumeEl);
 
-    infoEl.appendChild(logoEl);
-    infoEl.appendChild(nameEl);
-    infoEl.appendChild(priceEl);
-    infoEl.appendChild(marketCapEl);
-    infoEl.appendChild(volumeEl);
-    
-
-
-
-
-    searchedEl.appendChild(infoEl);
+    searchedEl.appendChild(logoElLi);
+    searchedEl.appendChild(nameElLi);
+    searchedEl.appendChild(priceElLi);
+    searchedEl.appendChild(marketCapElLi);
+    searchedEl.appendChild(volumeElLi);
+    descriptionEl.appendChild(descEl);
 
 
 };
@@ -188,7 +198,9 @@ var displayTrendingData = function(name, price = 0, logo = 0) {
         price = price.toFixed(8);
     }
 
-    
+    var nameElLi = document.createElement("li");
+    var priceElLi = document.createElement("li");
+    var logoElLi = document.createElement("li");
     
     
 
@@ -198,9 +210,9 @@ var displayTrendingData = function(name, price = 0, logo = 0) {
     logoEl.src = logo;
 
     // assign classes
-    nameEl.classList = ("coinList");
-    priceEl.classList = ("coinList");
-    logoEl.classList = ("coinList");
+    nameElLi.classList = ("coinList, col-2");
+    priceElLi.classList = ("coinList, col-9");
+    logoElLi.classList = ("coinList, clo-1");
     logoEl.height = 25;
 
     // make them the right sizes
@@ -208,11 +220,13 @@ var displayTrendingData = function(name, price = 0, logo = 0) {
     // priceEl.classList("col-5");
     // logoEl.classList("col-2");
 
-    coinEl.appendChild(logoEl);
-    coinEl.appendChild(nameEl);
-    coinEl.appendChild(priceEl);
+    logoElLi.appendChild(logoEl);
+    nameElLi.appendChild(nameEl);
+    priceElLi.appendChild(priceEl);
 
-    trendingEl.appendChild(coinEl);
+    trendingEl.appendChild(logoElLi);
+    trendingEl.appendChild(nameElLi);
+    trendingEl.appendChild(priceElLi);
     //console.log(coinEl)
 
 };
@@ -221,6 +235,25 @@ var numberWithCommas = function(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
+
+var insertTemplateLiteral = function(desc) {
+    console.log(desc.type)
+    for (i = 0; i < desc.length; i++){
+        if (desc[i] === "<" && desc[i+1] === "a") {
+            desc.replace("<", "${<")
+            console.log(addStr(desc, i, "${" ))
+            //console.log(desc[i-1])
+        } else if (desc[i] === "<" && desc[i+1] === "/" && desc[i+2] === "a" ){
+            desc[i + 3].replace(">", ">}")
+        }
+    }
+    //console.log(desc);
+    return desc;
+};
+
+var addStr = function(str, index, stringToAdd){
+    return str.substring(0, index) + stringToAdd + str.substring(index, str.length);
+  }
 coinInfo("Litecoin");
 
 bitcoinPrice();
