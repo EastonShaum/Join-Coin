@@ -110,15 +110,22 @@ var coinInfo = function(coinName) {
 };
 
 var displayChoosenData = function(name, price = 0, marketCap = 0, volume = 0, logo = 0) {
-    resetSearchedCoins();
     // create elements for the variables
-    var infoEl = document.createElement("li");
+    //var infoEl = document.createElement("li");
     var nameEl = document.createElement("p");
     var priceEl = document.createElement("p");
     var marketCapEl = document.createElement("p");
     var volumeEl = document.createElement("p");
     var logoEl = document.createElement("img");
 
+    //var descEl = document.createElement("div");
+
+    //var infoElLi = document.createElement("li");
+    var nameElLi = document.createElement("p");
+    var priceElLi = document.createElement("p");
+    var marketCapElLi = document.createElement("p");
+    var volumeElLi = document.createElement("p");
+    var logoElLi = document.createElement("img");
     if (price > 0.001) {
         price = price.toFixed(2);
     } else {
@@ -131,39 +138,50 @@ var displayChoosenData = function(name, price = 0, marketCap = 0, volume = 0, lo
     price = numberWithCommas(price);
     marketCap = numberWithCommas(marketCap);
     volume = numberWithCommas(volume);
+    //change the values to strings
+    price = price.toString();
+    marketCap = marketCap.toString();
+    volume = volume.toString();
 
+
+    //description = description.toString();
+
+    //description = insertTemplateLiteral(description);
+
+    //add dollar signs
+    price = "$" + price
+    marketCap = "$" + marketCap
+    volume = "$" + volume
     // assign the values
     nameEl.textContent = name;
     priceEl.textContent = price;
     marketCapEl.textContent = marketCap;
     volumeEl.textContent = volume;
-    logoEl.value = logo;
+    logoEl.src = logo;
+    //descEl.textContent = description;
 
     // assign classes
-    nameEl.classList = ("coinList");
-    priceEl.classList = ("coinList");
-    logoEl.classList = ("coinList");
-    marketCapEl.classList = ("coinList");
-    volumeEl.classList = ("coinList");
-
+    nameElLi.classList = ("coinList, col-2");
+    priceElLi.classList = ("coinList, col-2");
+    logoElLi.classList = ("coinList, col-2");
+    marketCapElLi.classList = ("coinList, col-3");
+    volumeElLi.classList = ("coinList, col-3");
+    
     logoEl.height = 50;
 
-    // make them the right sizes
-    // nameEl.classList("col-5");
-    // priceEl.classList("col-5");
-    // logoEl.classList("col-2");
+    logoElLi.appendChild(logoEl);
+    nameElLi.appendChild(nameEl);
+    priceElLi.appendChild(priceEl);
+    marketCapElLi.appendChild(marketCapEl);
+    volumeElLi.appendChild(volumeEl);
 
-    infoEl.appendChild(logoEl);
-    infoEl.appendChild(nameEl);
-    infoEl.appendChild(priceEl);
-    infoEl.appendChild(marketCapEl);
-    infoEl.appendChild(volumeEl);
-
-
-
-
-
-    searchedEl.appendChild(infoEl);
+    searchedEl.appendChild(logoElLi);
+    searchedEl.appendChild(nameElLi);
+    searchedEl.appendChild(priceElLi);
+    searchedEl.appendChild(marketCapElLi);
+    searchedEl.appendChild(volumeElLi);
+    
+    //descriptionEl.appendChild(descEl);
 
 
 };
