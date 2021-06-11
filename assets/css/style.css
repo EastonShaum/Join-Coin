@@ -523,6 +523,11 @@ section {
     padding-right: 10px;
 }
 
+#searched {
+    list-style: none;
+    column-count: 5;
+}
+
 #recent-searches {
     list-style: none;
 }
