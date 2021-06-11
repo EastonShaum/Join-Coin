@@ -200,9 +200,7 @@ var displayTrendingData = function(name, price = 0, logo = 0) {
         price = price.toFixed(8);
     }
 
-
-
-
+    price = "$" + price
 
     // assign the values
     nameEl.textContent = name;
@@ -233,7 +231,7 @@ var numberWithCommas = function(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
-coinInfo("bitcoin")
+//coinInfo("bitcoin")
 
 bitcoinPrice();
 //trendingCoins();
