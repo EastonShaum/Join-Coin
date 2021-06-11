@@ -110,6 +110,7 @@ var coinInfo = function(coinName) {
 };
 
 var displayChoosenData = function(name, price = 0, marketCap = 0, volume = 0, logo = 0) {
+    resetSearchedCoins();
     // create elements for the variables
     //var infoEl = document.createElement("li");
     var nameEl = document.createElement("p");
