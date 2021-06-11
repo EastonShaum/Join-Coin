@@ -122,11 +122,11 @@ var displayChoosenData = function(name, price = 0, marketCap = 0, volume = 0, lo
     //var descEl = document.createElement("div");
 
     //var infoElLi = document.createElement("li");
-    var nameElLi = document.createElement("p");
-    var priceElLi = document.createElement("p");
-    var marketCapElLi = document.createElement("p");
-    var volumeElLi = document.createElement("p");
-    var logoElLi = document.createElement("img");
+    var nameElLi = document.createElement("li");
+    var priceElLi = document.createElement("li");
+    var marketCapElLi = document.createElement("li");
+    var volumeElLi = document.createElement("li");
+    var logoElLi = document.createElement("li");
     if (price > 0.001) {
         price = price.toFixed(2);
     } else {
@@ -175,6 +175,33 @@ var displayChoosenData = function(name, price = 0, marketCap = 0, volume = 0, lo
     priceElLi.appendChild(priceEl);
     marketCapElLi.appendChild(marketCapEl);
     volumeElLi.appendChild(volumeEl);
+
+    var El1 = document.createElement("li");
+    var El2 = document.createElement("li");
+    var El3 = document.createElement("li");
+    var El4 = document.createElement("li");
+    var El5 = document.createElement("li");
+
+    El1.textContent = "Logo";
+    El2.textContent = "Coin Name";
+    El3.textContent = "Price";
+    El4.textContent = "Market Cap";
+    El5.textContent = "Volume";
+
+    El1.classList = ("col-2");
+    El2.classList = ("col-2");
+    El3.classList = ("col-2");
+    El4.classList = ("col-3");
+    El5.classList = ("col-3");
+
+    searchedEl.appendChild(El1);
+    searchedEl.appendChild(El2);
+    searchedEl.appendChild(El3);
+    searchedEl.appendChild(El4);
+    searchedEl.appendChild(El5);
+
+
+
 
     searchedEl.appendChild(logoElLi);
     searchedEl.appendChild(nameElLi);
