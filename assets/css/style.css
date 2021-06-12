@@ -39,10 +39,17 @@ header h1 {
     background-color: #a2c987;
     padding: 10px 30px 10px 30px;
     font-weight: bold;
-    margin: 0;
+    margin: auto 0;
     font-size: 36px;
     color: whitesmoke;
     border-radius: 3px;
+}
+.main-title {
+    font-size: 48px;
+}
+.main-title:hover {
+    text-decoration: none;
+    color: whitesmoke;
 }
 
 header a {
@@ -262,6 +269,10 @@ section {
     border-radius: 10px;
 }
 
+.hero-form h3 {
+    font-weight: bold;
+}
+
 
 /* Hero Style Ends*/
 
@@ -310,69 +321,6 @@ section {
 /* About Us/Crypto Styles End */
 
 
-/* Step Styles Start */
-
-.steps {
-    background: #696969;
-}
-
-.step {
-    margin: 50px auto;
-    padding-bottom: 50px;
-    width: 80%;
-    border-bottom: 1px solid #a2c987;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.step:last-child {
-    border-bottom: none;
-}
-
-.step h3 {
-    color: whitesmoke;
-    font-size: 46px;
-    flex: 1 30%;
-}
-
-.step-info {
-    flex: 2 70%;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-}
-
-.step-img {
-    flex: 1 12%;
-    margin-right: 20px;
-}
-
-.step-img img {
-    max-width: 100%;
-}
-
-.step-text {
-    flex: 12;
-}
-
-.step-text p {
-    color: whitesmoke;
-    font-size: 18px;
-}
-
-.step-text h4 {
-    font-size: 26px;
-    line-height: 1.5;
-    color: whitesmoke;
-    text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-}
-
-
-/* Steps Styles End */
-
-
 /* A Quick Look Styles Start */
 
 .following {
@@ -402,6 +350,26 @@ section {
 .snapshot-info p {
     font-size: 17px;
 }
+
+.snapshot-name {
+    font-weight: bold;
+}
+
+#news li {
+    font-family:sans-serif;
+    margin: 5px auto;
+}
+
+.coin-list {
+    margin: 5px 5px;
+}
+
+#logo, #price, #coin-name, #market-cap, #volume {
+    font-weight: bold;
+}
+/*.searched-columns {
+    font-weight: bolder;
+}*/
 
 
 /* Quick Look Styles End */
