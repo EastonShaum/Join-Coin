@@ -75,7 +75,7 @@ li {
 }
 
 .title {
-  font-size: 60px;
+  font-size: 50px;
   color: whitesmoke;
   border-bottom: 6px solid #a2c987;
   padding-bottom: 20px;
@@ -86,7 +86,8 @@ li {
 main p {
   margin: 15px auto 15px auto;
   padding: 10px;
-  text-align: center;
+  text-align: justify;
+  text-indent: 30px;
   font-size: 20px;
   line-height: 50px;
   width: 80%;
