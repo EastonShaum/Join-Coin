@@ -155,69 +155,6 @@ section {
     border-radius: 15px;
 }
 
-.checkbox-wrapper input,
-.radio-wrapper input {
-    opacity: 0;
-}
-
-.checkbox-wrapper label,
-.radio-wrapper label {
-    position: relative;
-    left: 10px;
-    margin: 10px;
-    line-height: 1.6;
-}
-
-.checkbox-wrapper label::before,
-.radio-wrapper label::before {
-    content: "";
-    height: 20px;
-    width: 20px;
-    background: rgba(255, 255, 255, 0.75);
-    border: 1px solid whitesmoke;
-    position: absolute;
-    top: -4px;
-    left: -30px;
-}
-
-.radio-wrapper label::before {
-    border-radius: 50%;
-}
-
-.radio-wrapper label::after {
-    content: "";
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background: whitesmoke;
-    position: absolute;
-    left: -29px;
-    top: -3px;
-    background-image: radial-gradient(circle, #a2c987, #424540);
-}
-
-.checkbox-wrapper label::after {
-    content: "";
-    height: 6px;
-    width: 14px;
-    border-left: 2px solid #696969;
-    border-bottom: 2px solid #696969;
-    position: absolute;
-    left: -26px;
-    top: 1px;
-    transform: rotate(-58deg);
-}
-
-.checkbox-wrapper input+label::after,
-.radio-wrapper input+label::after {
-    content: none;
-}
-
-.checkbox-wrapper input:checked+label::after,
-.radio-wrapper input:checked+label::after {
-    content: "";
-}
-
 .hero-form button:hover {
     background-color: #424540;
 }
@@ -310,69 +247,6 @@ section {
 /* About Us/Crypto Styles End */
 
 
-/* Step Styles Start */
-
-.steps {
-    background: #696969;
-}
-
-.step {
-    margin: 50px auto;
-    padding-bottom: 50px;
-    width: 80%;
-    border-bottom: 1px solid #a2c987;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.step:last-child {
-    border-bottom: none;
-}
-
-.step h3 {
-    color: whitesmoke;
-    font-size: 46px;
-    flex: 1 30%;
-}
-
-.step-info {
-    flex: 2 70%;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-}
-
-.step-img {
-    flex: 1 12%;
-    margin-right: 20px;
-}
-
-.step-img img {
-    max-width: 100%;
-}
-
-.step-text {
-    flex: 12;
-}
-
-.step-text p {
-    color: whitesmoke;
-    font-size: 18px;
-}
-
-.step-text h4 {
-    font-size: 26px;
-    line-height: 1.5;
-    color: whitesmoke;
-    text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-}
-
-
-/* Steps Styles End */
-
-
 /* A Quick Look Styles Start */
 
 .following {
@@ -407,96 +281,6 @@ section {
 /* Quick Look Styles End */
 
 
-/*REACH OUT STYLES START */
-
-.contact {
-    background: #696969;
-}
-
-.contact h2 {
-    color: whitesmoke;
-}
-
-.contact-info {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-}
-
-.contact-info>* {
-    flex: 1;
-    margin: 15px;
-}
-
-.contact-info iframe {
-    height: 400px;
-}
-
-.contact-info div {
-    color: whitesmoke;
-}
-
-.contact-info h3 {
-    color: whitesmoke;
-    font-size: 32px;
-}
-
-.contact-info address a {
-    color: #a2c987;
-}
-
-.contact-info p,
-.contact-info address {
-    margin: 20px 0;
-    line-height: 1.5;
-    font-size: 16px;
-    font-style: normal;
-}
-
-.contact-form input,
-.contact-form textarea {
-    border: 1px solid #424540;
-    display: block;
-    padding: 7px 15px;
-    font-size: 16px;
-    color: whitesmoke;
-    width: 100%;
-    margin-bottom: 15px;
-    margin-top: 5px;
-    border-radius: 10px;
-    background-color: rgba(255, 255, 255, 0.75)
-}
-
-.contact-form input:focus,
-.contact-form textarea:focus {
-    background-color: rgba(255, 255, 255, 1);
-    outline: none;
-}
-
-.contact-form button {
-    width: 100%;
-    border: none;
-    background: #a2c987;
-    color: whitesmoke;
-    text-align: center;
-    padding: 15px 0;
-    font-size: 16px;
-    border-radius: 10px;
-}
-
-.contact-form button:hover {
-    color: whitesmoke;
-    background: #424540;
-}
-
-.contact-info a {
-    color: #fce138;
-}
-
-
-/* REACH OUT STYLE END */
-
-
 /* Misc. Utilities */
 
 .text-left {
@@ -521,6 +305,17 @@ section {
 .coinList {
     display: inline-block;
     padding-right: 10px;
+}
+
+#about-coin {
+    word-break: break-word;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    line-height: 16px;
+    max-lines: 10;
+    -webkit-line-clamp: 10;
+    -webkit-box-orient: vertical;
 }
 
 #searched {

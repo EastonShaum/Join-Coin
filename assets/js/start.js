@@ -38,7 +38,7 @@ var trendingCoins = function(bitcoinPrice) {
         // request was successful
         if (response.ok) {
             response.json().then(function(data) {
-                console.log(data);
+                // console.log(data);
                 // Loop through the seven trending coins
                 for (i = 0; i < 7; i++) {
                     var coinName = data.coins[i].item.name
@@ -47,7 +47,7 @@ var trendingCoins = function(bitcoinPrice) {
 
 
 
-                    console.log(bitcoinPrice);
+                    // console.log(bitcoinPrice);
 
 
                     coinPrice = coinPrice * bitcoinPrice;
@@ -92,19 +92,21 @@ var coinInfo = function(coinName) {
         // request was successful
         if (response.ok) {
             response.json().then(function(data) {
-                console.log(data);
+                // console.log("coinInfo response", data);
 
                 var coinName = data.name
                 var coinPrice = data.market_data.current_price.usd
                 var coinMarketCap = data.market_data.market_cap.usd
                 var coinVolume = data.market_data.total_volume.usd
                 var pngLogo = data.image.small
+                var aboutCoin = data.description.en
 
 
                 displayChoosenData(coinName, coinPrice, coinMarketCap, coinVolume, pngLogo);
-
-
+                displayAboutCoin(aboutCoin);
             });
+        } else {
+            console.log("Coin not found.");
         }
     });
 };
@@ -153,7 +155,7 @@ var displayChoosenData = function(name, price = 0, marketCap = 0, volume = 0, lo
     price = "$" + price
     marketCap = "$" + marketCap
     volume = "$" + volume
-    // assign the values
+        // assign the values
     nameEl.textContent = name;
     priceEl.textContent = price;
     marketCapEl.textContent = marketCap;
@@ -167,7 +169,7 @@ var displayChoosenData = function(name, price = 0, marketCap = 0, volume = 0, lo
     logoElLi.classList = ("coinList, col-2");
     marketCapElLi.classList = ("coinList, col-3");
     volumeElLi.classList = ("coinList, col-3");
-    
+
     logoEl.height = 50;
 
     logoElLi.appendChild(logoEl);
@@ -200,18 +202,22 @@ var displayChoosenData = function(name, price = 0, marketCap = 0, volume = 0, lo
     searchedEl.appendChild(El4);
     searchedEl.appendChild(El5);
 
-
-
-
     searchedEl.appendChild(logoElLi);
     searchedEl.appendChild(nameElLi);
     searchedEl.appendChild(priceElLi);
     searchedEl.appendChild(marketCapElLi);
     searchedEl.appendChild(volumeElLi);
-    
+
     //descriptionEl.appendChild(descEl);
+};
 
-
+var displayAboutCoin = function(aboutCoin) {
+    var aboutTextEl = document.getElementById("about-coin");
+    if (aboutCoin) {
+        aboutTextEl.textContent = aboutCoin;
+    } else {
+        aboutTextEl.textContent = "Coin data not found.";
+    }
 };
 
 var displayTrendingData = function(name, price = 0, logo = 0) {
@@ -414,13 +420,17 @@ var displayNytArticles = function(article) {
         var articleLink = document.createElement("li");
         articleLink.setAttribute("id", "article-list-item-" + [i]);
         var articleHeadline = document.createElement("a");
-        if (article.response.docs[i].headline.print_headline) {
-            articleHeadline.setAttribute("href", article.response.docs[i].web_url);
-            articleHeadline.textContent = article.response.docs[i].headline.print_headline;
-        } else if (article.response.docs[i].snippet) {
-            articleHeadline.setAttribute("href", article.response.docs[i].web_url);
-            articleHeadline.textContent = article.response.docs[i].snippet;
+
+        if (article.response.docs.length > 0) {
+            if (article.response.docs[i].headline.print_headline) {
+                articleHeadline.setAttribute("href", article.response.docs[i].web_url);
+                articleHeadline.textContent = article.response.docs[i].headline.print_headline;
+            } else if (article.response.docs[i].snippet) {
+                articleHeadline.setAttribute("href", article.response.docs[i].web_url);
+                articleHeadline.textContent = article.response.docs[i].snippet;
+            }
         } else {
+            articleHeadline.textContent = "No recent articles found.";
             return;
         }
 
