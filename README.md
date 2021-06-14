@@ -1,10 +1,9 @@
 # Group-Project-1 - JoinCoin
 
 ## Live Webpage URL: 
-https://eastonshaum.github.io/Group-Project-1/
+https://eastonshaum.github.io/Join-Coin/
 
-https://github.com/EastonShaum/Group-Project-1
-
+https://github.com/EastonShaum/Join-Coin
 
 
 ## Ideas
