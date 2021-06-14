@@ -8,9 +8,9 @@ https://github.com/EastonShaum/Group-Project-1
 
 
 ## Ideas
-Cryptocurrency app - api for prices, API for twitter chat
+Cryptocurrency app - api for prices, API for NYT news
 https://www.coingecko.com/en/coins/all
-https://developer.twitter.com/en/docs
+https://developer.nytimes.com/
 
 ### Reference/ Wireframe for layout and design
 
