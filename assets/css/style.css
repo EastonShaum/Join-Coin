@@ -39,10 +39,17 @@ header h1 {
     background-color: #a2c987;
     padding: 10px 30px 10px 30px;
     font-weight: bold;
-    margin: 0;
+    margin: auto 0;
     font-size: 36px;
     color: whitesmoke;
     border-radius: 3px;
+}
+.main-title {
+    font-size: 48px;
+}
+.main-title:hover {
+    text-decoration: none;
+    color: whitesmoke;
 }
 
 header a {
@@ -199,6 +206,10 @@ section {
     border-radius: 10px;
 }
 
+.hero-form h3 {
+    font-weight: bold;
+}
+
 
 /* Hero Style Ends*/
 
@@ -276,6 +287,26 @@ section {
 .snapshot-info p {
     font-size: 17px;
 }
+
+.snapshot-name {
+    font-weight: bold;
+}
+
+#news li {
+    font-family:sans-serif;
+    margin: 5px auto;
+}
+
+.coin-list {
+    margin: 5px 5px;
+}
+
+#logo, #price, #coin-name, #market-cap, #volume {
+    font-weight: bold;
+}
+/*.searched-columns {
+    font-weight: bolder;
+}*/
 
 
 /* Quick Look Styles End */
